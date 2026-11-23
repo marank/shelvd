@@ -4,8 +4,14 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from typing import Any
+from urllib.parse import urlsplit
 
 import httpx
+
+
+def host(url: str) -> str:
+    """The host a fake request goes to, to route it by (never a substring of the URL)."""
+    return urlsplit(url).hostname or ""
 
 
 def response(

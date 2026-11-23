@@ -13,7 +13,7 @@ from apps.providers.services.integrations import save
 from apps.providers.sources.igdb import IGDBSource
 from apps.providers.sources.wikipedia import WikipediaSource
 
-from .fakes import response, router
+from .fakes import host, response, router
 
 
 def claim(value: Any, rank: str = "normal") -> dict[str, Any]:
@@ -264,7 +264,7 @@ def test_commons_search_and_photos(
     inner = httpx.get
 
     def get(url: str, *args: Any, **kwargs: Any) -> httpx.Response:
-        if url.startswith("https://commons.wikimedia.org"):
+        if host(url) == "commons.wikimedia.org":
             params = kwargs["params"]
             assert params["gsrsearch"] == "Switch console"
             assert params["iiurlwidth"] == "1600"

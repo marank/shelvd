@@ -11,7 +11,7 @@ The `justfile` holds every command; CI (`.github/workflows/build.yaml`) and the 
 - `just migrations` after model changes; commit the migrations.
 - Frontend package manager is **pnpm** only; its version lives only in `packageManager` (Dockerfile and CI read it). Backend dependencies via `uv add` / `uv add --dev`.
 - Pull request titles are Conventional Commits (`feat: …`, `fix: …`, `deps: …`); release-please makes releases from them.
-- Not updated by Dependabot, bump by hand: `TRIVY_IMAGE` and `POSTGRES_IMAGE` in `build.yaml` (Postgres together with `compose.yml`), actionlint and zizmor in the justfile, `rust-just` in the workflows, `.pre-commit-config.yaml`, and pnpm's `packageManager` if Dependabot leaves it alone.
+- Not updated by Dependabot, bump by hand: `TRIVY_IMAGE` and `POSTGRES_IMAGE` in `build.yaml` (Postgres together with `compose.yml`), actionlint and zizmor in the justfile, `rust-just` in the workflows, the uv image mounted in the Dockerfile, `.pre-commit-config.yaml`, and pnpm's `packageManager` if Dependabot leaves it alone.
 
 ## Backend rules
 

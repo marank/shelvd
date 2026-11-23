@@ -18,6 +18,17 @@ describe('i18n', () => {
     expect(messages.en).toEqual({})
   })
 
+  it('never merges into the object prototype', () => {
+    const messages = collectMessages({
+      './locales/de.json': JSON.parse('{"__proto__": {"polluted": "yes"}, "a": "ok"}') as Record<
+        string,
+        unknown
+      >,
+    })
+    expect(messages.de).toEqual({ a: 'ok' })
+    expect(({} as Record<string, unknown>).polluted).toBeUndefined()
+  })
+
   it('detects the language from storage, then the browser', () => {
     expect(detectLocale('en', ['de-DE'])).toBe('en')
     expect(detectLocale(null, ['fr-FR', 'en-US'])).toBe('en')

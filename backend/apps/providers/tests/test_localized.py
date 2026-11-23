@@ -14,7 +14,7 @@ from apps.providers.sources.base import CompanyFacts, EntryRef
 from apps.providers.sources.igdb import IGDBSource
 from apps.providers.sources.wikipedia import WikipediaSource
 
-from .fakes import IGDB_GAME, response, router
+from .fakes import IGDB_GAME, host, response, router
 
 GERMAN = {
     **IGDB_GAME,
@@ -452,7 +452,7 @@ def _commons(
         return response(content=content, ctype=ctype)
 
     def call(url: str, *args: Any, **kwargs: Any) -> httpx.Response:
-        if url.startswith("https://upload.wikimedia.org"):
+        if host(url) == "upload.wikimedia.org":
             return commons(url, *args, **kwargs)
         return inner(url, *args, **kwargs)
 
@@ -654,7 +654,7 @@ def igdb_companies(db: None, monkeypatch: pytest.MonkeyPatch) -> list[str]:
     inner = httpx.get
 
     def get(url: str, *args: Any, **kwargs: Any) -> httpx.Response:
-        if url.startswith("https://images.igdb.com"):
+        if host(url) == "images.igdb.com":
             assert kwargs["follow_redirects"] is False
             return response(content=PNG, ctype="image/png")
         return inner(url, *args, **kwargs)
