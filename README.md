@@ -12,8 +12,6 @@ rest. It runs on your own server with Docker, in English and German.
 
 ![Your collection as a grid of covers, with platform badges and who borrowed what](docs/screenshots/collection.png)
 
-<sub>Screenshots show made-up demo data: the titles are homages, the covers were drawn for this README.</sub>
-
 ## Features
 
 ### Your collection
