@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run --no-project --python \">=3.11\" \"$CLAUDE_PROJECT_DIR/scripts/lint_file.py\"",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}

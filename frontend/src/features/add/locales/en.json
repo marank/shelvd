@@ -1,0 +1,108 @@
+{
+  "add": {
+    "title": "Add game",
+    "description": "Search by title or scan the barcode.",
+    "addedCount": "{n} game added in this session | {n} games added in this session",
+    "added": "“{title}” added",
+    "choose": "Choose …",
+    "sourceErrors": "Not reachable right now: {sources}",
+    "scan": {
+      "cameraOff": "Camera off",
+      "starting": "Starting camera …",
+      "useField": "You can type the code below or use a barcode scanner instead.",
+      "errors": {
+        "insecure": "The camera only works over HTTPS (or on localhost).",
+        "unsupported": "This browser can't access a camera.",
+        "denied": "Camera access was denied. Allow it in your browser's site settings.",
+        "no-camera": "No camera found.",
+        "failed": "The camera couldn't be started."
+      },
+      "codeLabel": "Barcode or article number",
+      "codePlaceholder": "e.g. 0045496472306",
+      "lookup": "Find game",
+      "looking": "Looking up {code} …"
+    },
+    "search": {
+      "label": "Search by title",
+      "placeholder": "Title, e.g. Mario Kart",
+      "allPlatforms": "All platforms",
+      "typeMore": "Type at least two characters.",
+      "known": "Already known for this barcode",
+      "unknownBarcode": "No game known for this barcode yet. Enter its title.",
+      "catalog": "Already in the catalog",
+      "online": "Online (IGDB)",
+      "noCatalog": "Not in the catalog yet.",
+      "noOnline": "No online results.",
+      "igdbDisabled": "Online search needs IGDB credentials.",
+      "igdbLink": "Set up integrations",
+      "notListed": "Not listed?",
+      "toManual": "Enter it manually",
+      "barcode": "Barcode {code} will be added to the game you pick here.",
+      "barcodeFailed": "Barcode not added: {message}",
+      "placeholderCode": "Title or barcode, e.g. Mario Kart",
+      "scan": "Scan",
+      "codeHint": "Press Enter to search for this barcode.",
+      "clearBarcode": "Remove barcode"
+    },
+    "manual": {
+      "intro": "Only title and platform are required.",
+      "editionHint": "e.g. Collector's Edition",
+      "create": "Create game",
+      "title": "Enter a game yourself",
+      "game": "Game",
+      "details": "More details",
+      "created": "“{title}” created"
+    },
+    "confirm": {
+      "platformUnknown": "The source lists “{name}”, which isn't one of our platforms. Pick one.",
+      "import": "Take over"
+    },
+    "details": {
+      "more": "More details",
+      "add": "Add to library",
+      "addAndScan": "Add and scan next"
+    },
+    "destination": {
+      "label": "Where should it go?",
+      "library": "Into the library",
+      "libraryText": "You have the game – it's added as a copy.",
+      "track": "To Upcoming",
+      "trackText": "Not out yet, ordered or on its way – it goes to “Upcoming”."
+    },
+    "track": {
+      "submit": "Add to Upcoming",
+      "done": "“{title}” is now on Upcoming"
+    },
+    "mobile": {
+      "sheet": "Decision for the barcode",
+      "unknown": "No game found",
+      "failed": "Lookup failed",
+      "pick": "{n} matches – pick one",
+      "later": "Later",
+      "search": "Search by title",
+      "discard": "Discard",
+      "undo": "Undo",
+      "again": "Another copy",
+      "track": "Add to Upcoming",
+      "add": "Add",
+      "other": "Other game",
+      "details": "Details",
+      "autoShort": "Auto",
+      "round": "This round",
+      "count": "{done} of {all} added",
+      "empty": "Hold a barcode up to the camera.",
+      "code": "Type a code",
+      "searchTitle": "Search",
+      "defaults": "For this round",
+      "auto": "Add known barcodes right away",
+      "autoText": "If the catalog has exactly one game for the code, it goes into the library without asking. Undo it from the message or the list.",
+      "defaultsText": "Every copy of this round gets these details.",
+      "done": "Done",
+      "duplicate": "Already yours – another copy?"
+    },
+    "owned": {
+      "release": "Already in this library ({n}×)",
+      "game": "Game already here – in another release"
+    }
+  }
+}

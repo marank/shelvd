@@ -1,0 +1,92 @@
+{
+  "tracking": {
+    "title": "Demnächst",
+    "subtitle": "Spiele, die du im Blick hast, vorbestellt oder gekauft hast – bis du sie in eine Bibliothek übernimmst.",
+    "scope": {
+      "label": "Welche Einträge",
+      "mine": "Nur meine",
+      "all": "Auch von anderen"
+    },
+    "filter": "Nach Status filtern",
+    "groups": {
+      "released": "Erschienen — bereit zum Übernehmen",
+      "year": "Nur grob terminiert",
+      "tba": "TBA — noch kein Termin"
+    },
+    "count": "{n} Eintrag | {n} Einträge",
+    "by": "von {user}",
+    "for": "Bibliothek: {library}",
+    "takeOver": "In Bibliothek übernehmen",
+    "statusOf": "Status von „{title}“",
+    "statusChanged": "Status geändert: {status}",
+    "emptyTitle": "Noch nichts auf Demnächst",
+    "emptyText": "Hier stehen Spiele, die noch nicht erschienen sind, die du vorbestellt oder schon gekauft hast – wie in einem Release-Kalender, bis du sie in eine Bibliothek übernimmst.",
+    "emptyHint": "Über „Spiel hinzufügen“ oben rechts oder mit „Beobachten“ auf jeder Spielseite.",
+    "noMatch": "Keine Einträge mit diesem Status.",
+    "delete": {
+      "title": "Von Demnächst entfernen?",
+      "text": "„{title}“ verschwindet von Demnächst. Im Katalog bleibt das Spiel erhalten.",
+      "done": "Von Demnächst entfernt"
+    },
+    "statusHelp": {
+      "watching": "Du behältst das Spiel im Auge, gekauft ist noch nichts.",
+      "preordered": "Bestellt – es erscheint noch oder ist unterwegs.",
+      "bought": "Gekauft, aber noch nicht bei dir angekommen."
+    },
+    "edit": {
+      "newTitle": "Auf Demnächst setzen",
+      "description": "Ein Eintrag auf Demnächst – noch in keiner Bibliothek, bis du ihn übernimmst.",
+      "readOnly": "Dieser Eintrag gehört {user}. Du kannst ihn nur ansehen.",
+      "noRelease": "Keine Ausgabe gewählt.",
+      "status": "Status",
+      "statusText": "Wie weit bist du mit diesem Spiel?",
+      "purchase": "Kauf",
+      "purchaseText": "Wo und wann du es bestellt hast. Wird beim Übernehmen ins Exemplar kopiert.",
+      "shop": "Shop",
+      "shopPlaceholder": "z. B. Amazon, Media Markt",
+      "price": "Preis",
+      "orderedOn": "Bestellt am",
+      "library": "Bibliothek (optional)",
+      "libraryText": "Nur wenn du willst: Mitglieder dieser Bibliothek sehen den Eintrag (nur lesend), und beim Übernehmen ist sie vorausgewählt.",
+      "targetLibrary": "Bibliothek",
+      "noLibrary": "Keine",
+      "notes": "Notizen",
+      "created": "„{title}“ steht jetzt auf Demnächst",
+      "saved": "Gespeichert",
+      "release": "Erscheinungstermin",
+      "releaseText": "Gilt für diese Ausgabe im Katalog, also für alle, die sie haben oder beobachten.",
+      "released": "„{title}“ ist erschienen.",
+      "takeOver": "In Bibliothek übernehmen",
+      "owned": "„{title}“ steht schon in {library}. Den Eintrag hier brauchst du nicht mehr.",
+      "viewIn": "In {library} ansehen"
+    },
+    "takeOverPage": {
+      "description": "Das Spiel ist da: Es wird als Exemplar angelegt und verschwindet von Demnächst.",
+      "target": "Bibliothek",
+      "targetText": "In welche Bibliothek das Exemplar kommt.",
+      "copy": "Exemplar",
+      "copyText": "Angaben zum neuen Exemplar. Alles kann später geändert werden.",
+      "carried": "Wird übernommen",
+      "carriedText": "Diese Angaben vom Eintrag wandern ins Exemplar.",
+      "nothingCarried": "Keine Kaufangaben hinterlegt.",
+      "noLibraries": "Du kannst in keiner Bibliothek Spiele anlegen.",
+      "notMine": "Nur die Person, der der Eintrag gehört, kann ihn übernehmen.",
+      "save": "Übernehmen",
+      "done": "„{title}“ ist jetzt in {library}"
+    },
+    "button": {
+      "track": "Beobachten",
+      "details": "Öffnen",
+      "edit": "Bearbeiten",
+      "stop": "Von Demnächst entfernen",
+      "stopped": "Von Demnächst entfernt",
+      "menu": "Demnächst: {status}"
+    },
+    "actions": "Aktionen für „{title}“",
+    "changeDate": "Termin ändern",
+    "viewGame": "Spiel ansehen",
+    "open": "Öffnen",
+    "ownedIn": "Schon in {library}",
+    "emptyHintWatch": "Mit „Beobachten“ auf jeder Spielseite."
+  }
+}

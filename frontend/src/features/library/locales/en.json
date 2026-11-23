@@ -1,0 +1,11 @@
+{
+  "library": {
+    "defaultName": "My games",
+    "welcomeTitle": "Welcome to shelvd",
+    "welcomeText": "Create a library. Your games go in there – from NDS to PS5 – and you can share it with others later.",
+    "overview": {
+      "subtitle": "Every library you're a member of. Name, members, import, sharing and deleting are in each library's settings.",
+      "public": "Public"
+    }
+  }
+}

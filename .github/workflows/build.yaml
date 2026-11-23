@@ -1,0 +1,467 @@
+# CI: check backend, frontend, the workflows and the repository; then build the image
+# natively for amd64 and arm64, smoke-test it hardened like in production, scan it, and push
+# it to the GitHub container registry (ghcr.io/<owner>/<repository>) as one multi-platform
+# image with a provenance attestation.
+#
+# No secrets needed: pushes use the workflow's GITHUB_TOKEN. Every command a check runs lives
+# in the justfile, so CI and `just check` cannot drift apart.
+#
+# Pull requests (also from forks) run the checks and a test build of both platforms. Pushes
+# to main push `latest` and `sha-…`; version tags (v1.2.3, by hand or from release.yaml via
+# workflow_call) push 1.2.3, 1.2 and 1. Once a week main is rebuilt even without a change,
+# so the image gets Debian's security fixes and a newly known vulnerability turns the run red.
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Mondays 03:17 UTC (off the full hour, when GitHub's scheduler is busiest).
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      version:
+        description: Release version without "v" (e.g. 1.2.3); tags the image like a version tag
+        type: string
+        required: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.version }}
+  cancel-in-progress: true
+
+# Nothing by default; each job asks for what it needs.
+permissions: {}
+
+env:
+  REGISTRY: ghcr.io
+  # Started with `docker run` below; Dependabot does not see them. Bump TRIVY_IMAGE (tag and
+  # digest) by hand, POSTGRES_IMAGE together with compose.yml.
+  TRIVY_IMAGE: aquasec/trivy:0.76.2@sha256:8f6bb947dbc528902e11f2f5be52f7b519f6a39d5d148f41166f2040499768fb
+  POSTGRES_IMAGE: postgres:18-alpine
+
+jobs:
+  # --- Backend: `just check-backend` and `just check-deploy` against PostgreSQL -----------
+  backend:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    services:
+      postgres:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_DB: ci
+          POSTGRES_USER: ci
+          POSTGRES_PASSWORD: ci
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ci -d ci"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DB_TYPE: postgres
+      DB_HOST: localhost
+      DB_NAME: ci
+      DB_USER: ci
+      DB_PASSWORD: ci
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # makemessages and compilemessages need gettext.
+      - name: Install gettext
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends gettext
+
+      # Python comes from backend/.python-version, like natively. No cache: this workflow
+      # also publishes images (tags, releases), and a poisoned cache must not reach them.
+      - uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+        with:
+          enable-cache: false
+
+      - name: Install just
+        run: uv tool install rust-just==1.59.0
+
+      # The tests run with the local development settings (no .env in CI); the deploy
+      # checks below bring their own production-like ones (deploy-check.env).
+      - name: Checks and tests
+        env:
+          DEBUG: "true"
+          SECRET_KEY: ci-only-not-secret
+        run: just check-backend
+
+      - name: Deploy checks
+        run: just check-deploy
+
+  # --- Frontend: `just check-frontend` ------------------------------------------------------
+  frontend:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+
+      - name: Install just
+        run: uv tool install rust-just==1.59.0
+
+      # pnpm in the version of packageManager in package.json (the one place it is set).
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6.1.1
+        with:
+          package_json_file: frontend/package.json
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 26
+          # No cache, as for uv above.
+          package-manager-cache: false
+
+      - name: Checks, tests, build
+        run: just check-frontend
+
+  # --- Workflows: `just check-workflows` (actionlint syntax, zizmor security audit) ----------
+  workflows:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+
+      - name: Install just
+        run: uv tool install rust-just==1.59.0
+
+      # With a token zizmor also runs its online audits (e.g. known-vulnerable actions).
+      - name: Lint and audit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: just check-workflows
+
+  # --- End of support: `just check-eol`, only in the weekly run ----------------------------
+  # Updates Dependabot ignores (PostgreSQL majors) or doesn't offer (base image majors) come
+  # up here: the run turns red 180 days before a platform's support ends. Not a dependency of
+  # `image` and not a required check, so it never blocks the rebuild or a pull request.
+  eol:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+
+      - name: Install just
+        run: uv tool install rust-just==1.59.0
+
+      - name: Check
+        run: just check-eol
+
+  # --- Repository: committed secrets, vulnerable lock files, Dockerfile/compose ------------
+  repository:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # Secrets, critical fixable vulnerabilities and HIGH/CRITICAL Dockerfile/compose
+      # misconfigurations fail; HIGH vulnerabilities are reported. The files are streamed
+      # into the scanner as a tar archive; a SARIF report goes to the Security tab.
+      - name: Scan
+        run: |
+          mkdir -p "$RUNNER_TEMP/sarif"
+          trivy() {
+            tar -c --exclude=.git --exclude=node_modules --exclude=.venv . \
+              | docker run --rm -i -v trivy-cache:/root/.cache/trivy -v "$RUNNER_TEMP/sarif:/out" \
+                  --entrypoint sh "$TRIVY_IMAGE" -c \
+                  'mkdir /src && tar -x -C /src &&
+                   test -f /src/Dockerfile -a -f /src/backend/uv.lock || { echo "nothing to scan" >&2; exit 2; }
+                   exec trivy fs --no-progress --skip-version-check "$@" /src' \
+                  trivy "$@"
+          }
+          trivy --scanners vuln,secret,misconfig --format sarif --output /out/repository.sarif
+          trivy --scanners secret --exit-code 1
+          trivy --scanners vuln --severity CRITICAL --ignore-unfixed --exit-code 1
+          trivy --scanners misconfig --severity HIGH,CRITICAL --exit-code 1
+          trivy --scanners vuln --severity HIGH
+
+      # Code scanning results need GitHub Advanced Security on private repositories.
+      - name: Upload to the Security tab
+        if: always() && !github.event.repository.private
+        uses: github/codeql-action/upload-sarif@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
+        with:
+          sarif_file: ${{ runner.temp }}/sarif/repository.sarif
+          category: repository
+
+  # --- Dependency review: new vulnerable dependencies in a pull request (licenses: just check) -
+  dependency-review:
+    if: github.event_name == 'pull_request' && !github.event.repository.private
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/dependency-review-action@bbc44d14a204704ccc493733616cd1e93a0321ec # v5.0.1
+        with:
+          fail-on-severity: high
+
+  # --- Image, per platform on its own runner: build, smoke test, scan, push by digest ------
+  image:
+    needs: [backend, frontend, workflows, repository]
+    strategy:
+      matrix:
+        include:
+          - platform: linux/amd64
+            runner: ubuntu-24.04
+          - platform: linux/arm64
+            runner: ubuntu-24.04-arm
+    runs-on: ${{ matrix.runner }}
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    env:
+      PUSH: ${{ github.event_name != 'pull_request' }}
+      PLATFORM: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Names
+        id: names
+        env:
+          REPO: ${{ github.repository }}
+        run: |
+          echo "image=$(echo "$REGISTRY/$REPO" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+          echo "arch=${PLATFORM#linux/}" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      - uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
+        if: env.PUSH == 'true'
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
+        id: meta
+        with:
+          images: ${{ steps.names.outputs.image }}
+
+      # The runtime stage is always built without cache (no-cache-filters), so system
+      # package updates are never held back by the cache.
+      - name: Build
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          platforms: ${{ matrix.platform }}
+          pull: true
+          no-cache-filters: runtime
+          load: true
+          provenance: false
+          tags: smoke-test:local
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha,scope=${{ matrix.platform }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.platform }}
+
+      # Start the image against a throwaway PostgreSQL, hardened like compose.yml. Once it is
+      # healthy and has run long enough for a crashing program to give up, docker/smoke-test
+      # probes it from inside. TRUSTED_PROXIES=127.0.0.1 lets the probes act like a TLS
+      # proxy in front, so the https APP_URLS behave as in production.
+      - name: Smoke test
+        env:
+          IMAGE: smoke-test:local
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          NAME="smoke-$RUN_ID"
+          docker network create "$NAME"
+          trap 'docker logs "$NAME" || true; docker rm -fv "$NAME" "$NAME-db" >/dev/null 2>&1 || true; docker volume rm "$NAME-data" >/dev/null 2>&1 || true; docker network rm "$NAME" >/dev/null 2>&1 || true' EXIT
+          docker run -d --name "$NAME-db" --network "$NAME" --network-alias db \
+            -e POSTGRES_DB=ci -e POSTGRES_USER=ci -e POSTGRES_PASSWORD=ci \
+            "$POSTGRES_IMAGE"
+          docker run -d --name "$NAME" --network "$NAME" \
+            --read-only --tmpfs /tmp -v "$NAME-data:/data" \
+            --security-opt no-new-privileges:true --cap-drop ALL \
+            -e SECRET_KEY=ci-smoke-test-not-secret-but-long-enough-for-the-check-0123456789 \
+            -e APP_URLS=https://app.example.com -e TRUSTED_PROXIES=127.0.0.1 \
+            -e DB_TYPE=postgres -e DB_HOST=db -e DB_NAME=ci -e DB_USER=ci -e DB_PASSWORD=ci \
+            -e ADMIN_USERNAME=admin -e ADMIN_EMAIL=admin@example.com \
+            -e ADMIN_PASSWORD=ci-smoke-admin-password-42 \
+            "$IMAGE"
+
+          healthy=false
+          for i in $(seq 1 45); do
+            if docker exec "$NAME" python /usr/local/bin/healthcheck >/dev/null 2>&1; then
+              echo "Healthy after ${i}x2s"; healthy=true; break
+            fi
+            sleep 2
+          done
+          if [ "$healthy" != true ]; then
+            echo "Container did not become healthy" >&2
+            exit 1
+          fi
+
+          sleep 20
+          docker exec "$NAME" sh /usr/local/bin/smoke-test
+          # Not grep -q: it stops reading early, and docker logs would fail on SIGPIPE.
+          docker logs "$NAME" 2>&1 | grep -F "Created admin user 'admin'" >/dev/null
+
+      # Known vulnerabilities (OS packages, Python wheels) and secrets baked into the image.
+      # Critical fixable ones fail the run; HIGH is reported (fixes for Debian packages arrive
+      # with the next base image digest, which Dependabot proposes).
+      - name: Vulnerability scan
+        env:
+          IMAGE: smoke-test:local
+          ARCH: ${{ steps.names.outputs.arch }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/sarif"
+          trivy() {
+            docker save "$IMAGE" \
+              | docker run --rm -i -v trivy-cache:/root/.cache/trivy -v "$RUNNER_TEMP/sarif:/out" \
+                  --entrypoint sh "$TRIVY_IMAGE" -c \
+                  'cat > /tmp/image.tar &&
+                   exec trivy image --no-progress --skip-version-check --ignore-unfixed \
+                     --input /tmp/image.tar "$@"' \
+                  trivy "$@"
+          }
+          trivy --scanners vuln,secret --format sarif --output "/out/image-$ARCH.sarif"
+          trivy --scanners vuln,secret --severity CRITICAL --exit-code 1
+          trivy --scanners vuln --severity HIGH
+
+      - name: Upload to the Security tab
+        if: always() && !github.event.repository.private
+        uses: github/codeql-action/upload-sarif@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
+        with:
+          sarif_file: ${{ runner.temp }}/sarif/image-${{ steps.names.outputs.arch }}.sarif
+          category: image-${{ steps.names.outputs.arch }}
+
+      # The same build again, now from the cache of the step above (so exactly the tested
+      # layers), pushed by digest only; the merge job gives it its tags.
+      - name: Push by digest
+        id: push
+        if: env.PUSH == 'true'
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: .
+          platforms: ${{ matrix.platform }}
+          labels: ${{ steps.meta.outputs.labels }}
+          provenance: mode=max
+          sbom: true
+          outputs: type=image,name=${{ steps.names.outputs.image }},push-by-digest=true,name-canonical=true,push=true
+          cache-from: type=gha,scope=${{ matrix.platform }}
+
+      - name: Export digest
+        if: env.PUSH == 'true'
+        env:
+          DIGEST: ${{ steps.push.outputs.digest }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/digests"
+          touch "$RUNNER_TEMP/digests/${DIGEST#sha256:}"
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: env.PUSH == 'true'
+        with:
+          name: digests-${{ steps.names.outputs.arch }}
+          path: ${{ runner.temp }}/digests/*
+          if-no-files-found: error
+          retention-days: 1
+
+  # --- Merge: one multi-platform image with all tags, plus a provenance attestation ---------
+  merge:
+    if: github.event_name != 'pull_request'
+    needs: [image]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          path: ${{ runner.temp }}/digests
+          pattern: digests-*
+          merge-multiple: true
+
+      - name: Image name
+        id: names
+        env:
+          REPO: ${{ github.repository }}
+        run: echo "image=$(echo "$REGISTRY/$REPO" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+
+      - uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # latest from main, sha-<commit> always, 1.2.3 / 1.2 / 1 from a version tag or the
+      # release workflow's version (pre-releases only their full version).
+      - uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
+        id: meta
+        with:
+          images: ${{ steps.names.outputs.image }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha,prefix=sha-
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+            type=semver,pattern={{version}},value=${{ inputs.version }},enable=${{ inputs.version != '' }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ inputs.version }},enable=${{ inputs.version != '' }}
+            type=semver,pattern={{major}},value=${{ inputs.version }},enable=${{ inputs.version != '' }}
+
+      - name: Create the multi-platform image
+        working-directory: ${{ runner.temp }}/digests
+        env:
+          IMAGE: ${{ steps.names.outputs.image }}
+          TAGS: ${{ steps.meta.outputs.tags }}
+        run: |
+          tag_args=()
+          while read -r tag; do [ -n "$tag" ] && tag_args+=(-t "$tag"); done <<< "$TAGS"
+          sources=()
+          for digest in *; do sources+=("$IMAGE@sha256:$digest"); done
+          docker buildx imagetools create "${tag_args[@]}" "${sources[@]}"
+
+      - name: Digest
+        id: index
+        env:
+          IMAGE: ${{ steps.names.outputs.image }}
+          TAG: ${{ steps.meta.outputs.version }}
+        run: |
+          digest=$(docker buildx imagetools inspect "$IMAGE:$TAG" --format '{{json .Manifest}}' | jq -r .digest)
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
+          echo "Pushed $IMAGE@$digest"
+
+      # Verifiable with `gh attestation verify oci://<image> --owner <owner>`. Attestations
+      # need a public repository (or GitHub Enterprise Cloud for private ones).
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        if: ${{ !github.event.repository.private }}
+        with:
+          subject-name: ${{ steps.names.outputs.image }}
+          subject-digest: ${{ steps.index.outputs.digest }}
+          push-to-registry: true

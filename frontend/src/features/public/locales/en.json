@@ -1,0 +1,14 @@
+{
+  "public": {
+    "goneTitle": "This link is no longer valid",
+    "goneText": "The owner may have turned off sharing or created a new link. Ask them for the current one.",
+    "sharedBy": "Shared by {owner}",
+    "groupBy": "Group by",
+    "all": "All",
+    "filterPlaceholder": "Filter titles …",
+    "noItems": "No games here.",
+    "noMatches": "No loaded game matches \"{q}\".",
+    "showing": "{shown} of {total}",
+    "emptyList": "This list is empty."
+  }
+}

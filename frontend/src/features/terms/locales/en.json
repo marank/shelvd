@@ -1,0 +1,157 @@
+{
+  "terms": {
+    "companies": {
+      "title": "Companies",
+      "one": "Company",
+      "subtitle": "Publishers and developers – the same for everyone, like the whole catalog.",
+      "uses": "{n} game developed or release published | {n} games developed or releases published",
+      "edit": "Edit company",
+      "descriptionHint": "History, headquarters, well-known games …",
+      "usesShort": "Not used | Used once | Used {n}×"
+    },
+    "genres": {
+      "title": "Genres",
+      "one": "Genre",
+      "subtitle": "Genres of the games – the same for everyone, like the whole catalog.",
+      "uses": "{n} game | {n} games",
+      "edit": "Edit genre",
+      "descriptionHint": "What makes this genre?",
+      "usesShort": "No games | One game | {n} games"
+    },
+    "series": {
+      "title": "Series",
+      "one": "Series",
+      "subtitle": "Game series – a game can belong to several.",
+      "uses": "{n} game | {n} games",
+      "edit": "Edit series",
+      "descriptionHint": "What is the series about?",
+      "usesShort": "No games | One game | {n} games"
+    },
+    "search": "Search",
+    "none": "Nothing found.",
+    "games": "Games",
+    "unused": "Not used by any game yet.",
+    "merge": "Merge",
+    "catalogHint": "Applies to the whole catalog, for every library.",
+    "name": "Name",
+    "nameHint": "If the name exists already, merge the two instead.",
+    "deleteTitle": "Delete “{name}”?",
+    "deleteText": "The games stay, only this entry goes. | The game stays, it only loses this entry. | The {n} games stay, they only lose this entry.",
+    "deleted": "“{name}” deleted.",
+    "mergeTitle": "Merge “{name}”",
+    "mergeHint": "For duplicates and typos: every game of this entry gets the picked one, then this one is deleted.",
+    "mergeInto": "Merge into",
+    "mergeIntoHint": "The entry that stays.",
+    "pickTarget": "Pick the entry that should stay.",
+    "moves": "No game changes | {n} game changes | {n} games change",
+    "movesHint": "These games get the picked entry.",
+    "merged": "Merged into “{name}”.",
+    "actions": "Actions",
+    "mergeMenu": "Merge with another entry…",
+    "years": "Years",
+    "inLibrary": "In {library}",
+    "related": "Often together with",
+    "role": {
+      "all": "All",
+      "developed": "Developed",
+      "published": "Published"
+    },
+    "sort": {
+      "year": "Year",
+      "title": "Title"
+    },
+    "onlyOwned": "Only mine",
+    "noneOwned": "None of these games is in your library.",
+    "addDescription": "Add a description",
+    "about": "General",
+    "description": "Description",
+    "image": "Picture",
+    "imageHint": "A logo or picture for the page – SVG, PNG, JPEG or WebP, up to 2 MB. Saved right away.",
+    "upload": "Upload",
+    "removeImage": "Remove",
+    "imageSaved": "Picture saved.",
+    "describe": {
+      "menu": "Description from {source} …",
+      "title": "Description from {source}",
+      "hint": "Which entry at {source} is it? Its text becomes the description – in every language there is, with the source credited.",
+      "take": "Use",
+      "replace": "Replace",
+      "taken": "Description added",
+      "logo": "Also use the logo",
+      "logoHint": "The entry's logo becomes the page's picture.",
+      "logoReplaces": "Replaces the current picture with the entry's logo.",
+      "hasLogo": "Logo",
+      "takenWithLogo": "Description and logo added",
+      "logoFailed": "The logo couldn't be used.",
+      "confident": "Match",
+      "factsOnly": "No text – only details such as founding, country and website.",
+      "takeFacts": "Use details",
+      "askOther": "Search {source}"
+    },
+    "details": {
+      "title": "Company",
+      "hint": "What is known about the company – also filled from Wikipedia when you take a description from there.",
+      "founded": "Founded",
+      "dissolved": "Dissolved",
+      "existed": "Existed",
+      "country": "Country",
+      "countryPlaceholder": "e.g. JP",
+      "headquarters": "Headquarters",
+      "website": "Website",
+      "parent": "Part of",
+      "subsidiaries": "Subsidiaries"
+    },
+    "descriptionIn": "Description ({language})",
+    "onlyIn": "Only in {language}",
+    "images": {
+      "menu": "Choose picture …",
+      "choose": "Choose from sources",
+      "title": "Choose picture",
+      "hint": "Every picture of the linked entries, older logos too. One click makes it the page's picture.",
+      "none": "No pictures yet – take a description from a source first, then its logos show up here.",
+      "broken": "Can't be loaded",
+      "platformHint": "Every picture of the linked entries: logos, small logos and photos. Each can become the page's logo, its photo or the badge's icon.",
+      "kinds": {
+        "logo": "Logo",
+        "icon": "Small logo",
+        "photo": "Photo"
+      },
+      "as": {
+        "image": "As logo",
+        "photo": "As photo",
+        "icon": "As icon"
+      },
+      "slots": {
+        "image": "Logo",
+        "photo": "Photo of the device",
+        "icon": "Badge icon"
+      },
+      "saved": {
+        "image": "Picture saved",
+        "photo": "Photo saved",
+        "icon": "Icon saved"
+      },
+      "commons": "Search Wikimedia Commons",
+      "commonsHint": "For photos or a missing icon: e.g. “Nintendo DS icon” or “Nintendo DS Lite console”.",
+      "commonsPlaceholder": "{name} icon"
+    },
+    "franchises": {
+      "title": "Franchises",
+      "one": "Franchise",
+      "subtitle": "Brands above the series (“Mario” above “Super Mario” and “Mario Kart”) – a game can belong to several.",
+      "uses": "{n} game | {n} games",
+      "edit": "Edit franchise",
+      "descriptionHint": "What belongs to this brand?",
+      "usesShort": "No games | One game | {n} games"
+    },
+    "count": "One entry | {n} entries",
+    "sortBy": "Sort",
+    "overviewSort": {
+      "name": "A–Z",
+      "uses": "Most games"
+    },
+    "partOf": "Part of",
+    "franchiseOf": "Franchise",
+    "franchiseOfHint": "The brand the series belongs to (“Mario Kart” → “Mario”). Taken from Wikidata when the franchise is in the catalog."
+  }
+}

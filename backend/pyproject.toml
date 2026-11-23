@@ -1,0 +1,187 @@
+[project]
+name = "shelvd-backend"
+version = "0.1.0"
+description = "shelvd backend: game collection API"
+license = "AGPL-3.0-or-later"
+requires-python = ">=3.14"
+dependencies = [
+    "cryptography>=50.0.2",
+    "defusedxml>=0.7.1",
+    "django-ninja>=1.7.3",
+    "django-stubs-ext>=6.1.2",
+    "django[argon2]>=6.1.2",
+    "gunicorn>=26.2.0",
+    "httpx>=0.28.1",
+    "pillow>=13.0.0",
+    "psycopg[binary]>=3.3.6",
+    "pycountry>=26.2.16",
+    "resvg-py>=0.5.0",
+]
+
+[tool.uv]
+package = false  # a Django project, not an installable package
+
+[dependency-groups]
+dev = [
+    "complexipy>=9.0.0",
+    "deptry>=0.25.1",
+    "django-stubs>=6.1.2",
+    "import-linter>=2.17",
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "pytest-django>=4.14.0",
+    "pytest-randomly>=5.1.0",
+    "pytest-xdist>=3.8.0",
+    "ruff>=0.17.3",
+    "types-defusedxml>=0.7.0.20260504",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py314"
+extend-exclude = ["*/migrations/*"]
+
+[tool.ruff.lint]
+# Correctness, readability and safety — limits against tangled and deeply nested code
+# (C90), deliberately none against length (no PLR0915 statements, no max-lines).
+select = [
+    "E", "W", "F", "I", "UP", "B", "DJ", "SIM", "C4", "RET", "PIE", "PTH", "RUF",
+    "C90",  # cyclomatic complexity
+    "DTZ",  # timezone-aware datetimes only
+    "T20",  # no print()
+    "ERA",  # no commented-out code
+    "N",    # naming conventions
+    "S",    # security patterns (bandit)
+    "BLE",  # no blind `except Exception` that swallows errors
+    "TRY",  # exception handling: no `except: pass`, re-raise with context, …
+    "PERF", # slow patterns (building a list in a loop, …)
+    "FURB", # older, longer spellings of what the standard library does directly
+    "PT",   # pytest: tests that assert something, no stray fixtures
+    "PGH",  # no blanket `# noqa` / `# type: ignore` (RUF100 reports unused ones)
+]
+ignore = [
+    "S603", "S607",  # subprocess with fixed argument lists (manage.py, uv) is intended
+    "RUF012",        # Django's class attributes (Meta.ordering, list_display) are lists by convention
+    "N806",          # `User = get_user_model()` and similar inside functions
+    "TRY003",        # messages passed to the exception class are fine
+]
+
+# Typography the German and English texts use on purpose: en dash, the "Ort › Typ"
+# separator and the multiplication sign (work × platform).
+allowed-confusables = ["–", "›", "×"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 15
+
+[tool.ruff.lint.per-file-ignores]
+"**/tests/**" = ["S101", "S105", "S106"]  # assert, passwords in fixtures
+"conftest.py" = ["S101"]
+"scripts/**" = ["T201"]                   # command-line tools print their result
+
+[tool.ruff.lint.isort]
+known-first-party = ["addons", "apps", "config"]
+
+[tool.ruff.lint.flake8-bugbear]
+# Ninja declares parameters with these in defaults (e.g. query lists as `= Query([])`).
+extend-immutable-calls = [
+    "ninja.Query", "ninja.Path", "ninja.Body", "ninja.Form", "ninja.File", "ninja.params.Query",
+]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["test_*.py"]
+# Add-ons installed in backend/addons run their tests themselves (`pytest addons/<name>`).
+testpaths = ["apps", "config"]
+# In parallel (pytest-xdist), each worker with its own test database; more than 8 only
+# add start-up time. One process, e.g. to debug with --pdb: -n 0.
+addopts = "-n auto --maxprocesses=8"
+# pytest-randomly shuffles the test order on every run, so tests that pass only because of
+# another test's leftovers fail; the seed is printed (`--randomly-seed=…` to repeat,
+# `-p no:randomly` to switch it off while debugging).
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main", "pydantic.mypy"]
+strict = true
+# Checks against cases the types rule out (`if x is None` for a non-optional x, a branch
+# that can't run) are reported instead of kept "to be safe".
+warn_unreachable = true
+strict_equality_for_none = true
+enable_error_code = [
+    "redundant-expr",
+    "truthy-bool",          # `if obj:` on an object that is always true
+    "possibly-undefined",   # a variable only set in some branches
+    "ignore-without-code",  # `# type: ignore` names the error it silences
+    "exhaustive-match",     # a `match` over an enum or union misses a case
+]
+exclude = ["/migrations/"]
+
+[[tool.mypy.overrides]]
+module = ["*.migrations.*"]
+ignore_errors = true
+
+[[tool.mypy.overrides]]
+# scripts/check_translations.py runs with `uv run --with polib`; polib is no dependency.
+module = ["polib"]
+ignore_missing_imports = true
+
+[tool.django-stubs]
+django_settings_module = "config.settings"
+
+[tool.deptry]
+# Tests may use dev dependencies (pytest); the CI scripts bring their own (polib).
+extend_exclude = [".*/tests/.*", "conftest\\.py", "scripts/"]
+
+[tool.deptry.per_rule_ignores]
+# Used at runtime, never imported: DB driver (ENGINE string) and the WSGI server.
+DEP002 = ["psycopg", "gunicorn"]
+
+[tool.coverage.run]
+source = ["apps", "config"]
+omit = ["*/migrations/*", "config/asgi.py", "config/wsgi.py", "manage.py"]
+
+[tool.coverage.report]
+fail_under = 90
+skip_covered = true
+show_missing = true
+
+[tool.complexipy]
+# Cognitive complexity per function (nesting costs more than a flat list of cases); 15 is
+# complexipy's default. Migrations are history: they stay as they were applied.
+max-complexity-allowed = 15
+exclude = ["*/migrations/*"]
+
+# Layers inside every app: api may use services, selectors and models; services may use
+# selectors and models; nothing imports api. Schemas (the API's data shapes) sit between
+# services and selectors: services take them as input, their resolvers read through
+# selectors. core imports no other app. A test (apps/core/tests/test_architecture.py)
+# fails when an app is missing here.
+[tool.importlinter]
+root_packages = ["apps", "config"]
+
+[[tool.importlinter.contracts]]
+name = "Layers inside each app"
+type = "layers"
+containers = [
+    "apps.accounts",
+    "apps.catalog",
+    "apps.collection",
+    "apps.core",
+    "apps.providers",
+    "apps.sharing",
+    "apps.tracking",
+]
+layers = ["(api)", "(services)", "(schemas)", "(selectors)", "(models)"]
+
+[[tool.importlinter.contracts]]
+name = "core depends on no other app"
+type = "forbidden"
+source_modules = ["apps.core"]
+forbidden_modules = [
+    "apps.accounts",
+    "apps.catalog",
+    "apps.collection",
+    "apps.providers",
+    "apps.sharing",
+    "apps.tracking",
+]

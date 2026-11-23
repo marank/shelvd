@@ -1,0 +1,42 @@
+# Releases with release-please: from the Conventional Commits on main it keeps a release
+# pull request up to date (CHANGELOG.md, next version). Merging that pull request creates
+# the tag vX.Y.Z and the GitHub release; then build.yaml runs as a reusable workflow and
+# pushes the image with the version tags. (Tags created with the GITHUB_TOKEN don't start
+# other workflows, hence the call instead of relying on build.yaml's tag trigger.)
+name: release
+
+on:
+  push:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      version: ${{ steps.release.outputs.version }}
+    steps:
+      - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        id: release
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  image:
+    needs: [release-please]
+    if: needs.release-please.outputs.release_created == 'true'
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+      id-token: write
+      attestations: write
+    # The documented form for a reusable workflow of the same repository and commit.
+    uses: ./.github/workflows/build.yaml # zizmor: ignore[self-repository]
+    with:
+      version: ${{ needs.release-please.outputs.version }}

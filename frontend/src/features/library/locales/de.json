@@ -1,0 +1,11 @@
+{
+  "library": {
+    "defaultName": "Meine Spiele",
+    "welcomeTitle": "Willkommen bei shelvd",
+    "welcomeText": "Lege eine Bibliothek an. Darin landen deine Spiele – von NDS bis PS5 – und du kannst sie später mit anderen teilen.",
+    "overview": {
+      "subtitle": "Alle Bibliotheken, in denen du Mitglied bist. Name, Mitglieder, Import, Freigabe und Löschen findest du in den Einstellungen der jeweiligen Bibliothek.",
+      "public": "Öffentlich"
+    }
+  }
+}

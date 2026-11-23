@@ -1,0 +1,20 @@
+{
+  "review": {
+    "title": "Prüfliste",
+    "subtitle": "Selbst eingetragene Spiele und zugeordnete Barcodes. Sie sind schon nutzbar, bis ein Admin sie prüft.",
+    "empty": "Nichts zu prüfen.",
+    "approve": "Passt",
+    "approveAll": "Alle freigeben",
+    "removeBarcode": "Barcode entfernen",
+    "unknown": "Unbekannt",
+    "copies": "kein Exemplar | {n} Exemplar | {n} Exemplare",
+    "hint": "Doppelt angelegt oder falsch? Öffne den Eintrag und führe ihn über ⋮ mit dem richtigen zusammen oder verschiebe die Ausgabe.",
+    "badge": "Ungeprüft",
+    "badgeTitle": "Selbst eingetragen, noch nicht von einem Admin geprüft",
+    "kinds": {
+      "work": "Spiel",
+      "release": "Ausgabe",
+      "barcode": "Barcode"
+    }
+  }
+}

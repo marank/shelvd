@@ -1,0 +1,138 @@
+{
+  "integrations": {
+    "title": "Integrations",
+    "subtitle": "External services for game data, barcodes, play times, scores and covers. All optional – without them you enter games by hand.",
+    "adminOnly": "Only admins can set them up.",
+    "setUp": "Set up",
+    "status": {
+      "active": "Active",
+      "off": "Off",
+      "incomplete": "Incomplete"
+    },
+    "kinds": {
+      "metadata": "Game data",
+      "facts": "Play time & scores",
+      "covers": "Covers",
+      "playtime": "Your play time"
+    },
+    "unofficial": "Unofficial",
+    "unofficialText": "No official API: it may stop working any time. Values already loaded stay.",
+    "lastOk": "Last success: {time}",
+    "lastError": "Last error ({time}): {message}",
+    "lastRun": "Last background refresh: {time}",
+    "docs": "Get access",
+    "local": {
+      "title": "Your own data",
+      "text": "Confirmed barcodes, covers and play times are stored locally and reused for everyone – each source is asked only once."
+    },
+    "about": {
+      "igdb": "Game data, regional release dates and covers for search. Free for non-commercial use (needs a Twitch account).",
+      "wikipedia": "Titles, descriptions and first release in the interface's language (German or English) when matching. No key needed; texts are CC BY-SA, the source is saved with them. Only completes games you have, doesn't add any.",
+      "hltb": "How long a game takes: main story, with extras, completionist. Shown on the game and as fields to sort and filter by.",
+      "opencritic": "Critic scores (top critic average, percent recommended). Via RapidAPI, with a free tier.",
+      "thegamesdb": "Front covers, also regional ones. Free API key with a monthly allowance.",
+      "screenscraper": "Very good regional covers, especially for handhelds and retro. A user account is enough to start; developer credentials (requested from ScreenScraper) are optional."
+    },
+    "attribution": {
+      "igdb": "Game data by IGDB.com",
+      "wikipedia": "Texts from Wikipedia (CC BY-SA 4.0)",
+      "hltb": "Play times by HowLongToBeat.com",
+      "opencritic": "Scores by OpenCritic.com",
+      "thegamesdb": "Covers by TheGamesDB.net",
+      "screenscraper": "Covers by ScreenScraper.fr"
+    },
+    "fields": {
+      "client_id": "Client ID",
+      "client_secret": "Client secret",
+      "key": "API key",
+      "rapidapi_key": "RapidAPI key",
+      "api_key": "API key",
+      "dev_id": "Developer ID",
+      "dev_password": "Developer password",
+      "user": "User name",
+      "password": "Password",
+      "max_age_hours": "Counts as outdated after",
+      "periodic": "Refresh regularly in the background",
+      "periodic_hours": "Every",
+      "batch": "Games per run"
+    },
+    "edit": {
+      "title": "Set up {name}",
+      "enabled": "Switched on",
+      "enabledText": "Switched off, everything stored stays; only nothing new is fetched.",
+      "access": "Access",
+      "accessText": "Keys are stored encrypted and never shown again. Leave empty to keep them.",
+      "secretSet": "Saved ({masked})",
+      "secretMissing": "Not set yet",
+      "remove": "Remove",
+      "removed": "Removed when you save",
+      "freshness": "Freshness",
+      "freshnessText": "When stored values count as outdated. Outdated values are fetched again when a game is opened.",
+      "periodicText": "Also fetches outdated values without anyone opening the game – gently, in small portions.",
+      "hours": "hours",
+      "days": "days",
+      "test": "Save and test",
+      "testOk": "Connection works: {message}",
+      "testFailed": "Connection failed: {message}",
+      "saved": "{name} saved"
+    },
+    "facts": {
+      "title": "Match: {source}",
+      "description": "Which entry on {source} belongs to this game? Your choice is kept.",
+      "search": "Search",
+      "choose": "Use this one",
+      "chosen": "Match saved",
+      "auto": "Match automatically",
+      "autoDone": "Matched automatically again",
+      "none": "Nothing found. Try another search.",
+      "current": "Current",
+      "notFound": "Not found on {source}",
+      "match": "Change match",
+      "open": "View on {source}",
+      "refreshed": "loaded {time} ago"
+    },
+    "covers": {
+      "title": "Find a cover",
+      "description": "Covers from TheGamesDB and ScreenScraper for this release. The one you choose is stored locally and shown for every copy of this release.",
+      "descriptionCopy": "Covers from TheGamesDB and ScreenScraper. The one you choose is only for this copy; the catalog stays as it is.",
+      "take": "Use this cover",
+      "taken": "Cover taken over",
+      "none": "No covers found. Try another search above, e.g. without the edition.",
+      "noSources": "No cover source set up. An admin can switch on TheGamesDB or ScreenScraper under “Integrations”.",
+      "search": "Find a cover …"
+    },
+    "metadata": {
+      "title": "Match game data",
+      "description": "Which {source} entry is this game? Next you'll see what would change and decide yourself.",
+      "linked": "Linked with {source}",
+      "refill": "Match again",
+      "fields": {
+        "title": "Title",
+        "summary": "Description",
+        "first_release_date": "First release",
+        "genres": "Genres",
+        "developers": "Developers",
+        "release_date": "Release date",
+        "publisher": "Publisher",
+        "cover": "Cover"
+      },
+      "reviewHint": "Empty fields and more precise dates are preselected. Anything that merely differs is only taken if you tick it.",
+      "current": "Current",
+      "apply": "Link with entry | Apply 1 change | Apply {n} changes",
+      "applied": "Nothing applied | 1 change applied | {n} changes applied",
+      "linkedOnly": "Linked with {source}, nothing changed",
+      "same": "Everything already matches {source}.",
+      "kinds": {
+        "fill": "empty",
+        "precise": "more precise",
+        "differs": "differs"
+      },
+      "titleWith": "Match with {source}",
+      "source": "Source",
+      "offers": {
+        "igdb": "Title, description (English), dates per platform, companies, genres, cover",
+        "wikipedia": "Title, description and first release in your language"
+      }
+    }
+  }
+}

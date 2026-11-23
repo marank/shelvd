@@ -1,0 +1,3 @@
+allowBuilds:
+  # Only switches between Vue 2 and 3 at install time; Vue 3 needs nothing from it.
+  vue-demi: false

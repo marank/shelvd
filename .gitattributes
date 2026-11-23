@@ -1,0 +1,22 @@
+# Text files are stored and checked out with LF on every platform,
+# regardless of the local core.autocrlf setting.
+* text=auto eol=lf
+
+# Windows-only scripts need CRLF.
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+
+# Binary files: no line-ending conversion, no textual diff.
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.webp  binary
+*.pdf   binary
+*.zip   binary
+*.gz    binary
+*.woff  binary
+*.woff2 binary
+*.ttf   binary
+*.otf   binary

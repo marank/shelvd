@@ -1,0 +1,86 @@
+name: shelvd
+
+services:
+  db:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_NAME:?set DB_NAME in .env}
+      POSTGRES_USER: ${DB_USER:?set DB_USER in .env}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in .env}
+    volumes:
+      # Postgres 18+ images keep data under /var/lib/postgresql/<major>/docker, so the
+      # volume goes on /var/lib/postgresql; for <=17 it is /var/lib/postgresql/data.
+      - db-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    # The image CI pushes; APP_IMAGE pins a version (ghcr.io/marank/shelvd:1.2) or points at
+    # a local build (`just docker-up`: docker build -t shelvd ., APP_IMAGE=shelvd).
+    image: ${APP_IMAGE:-ghcr.io/marank/shelvd:latest}
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      DB_TYPE: postgres
+      DB_HOST: db
+      DB_PORT: "5432"
+      DEBUG: "false"
+    ports:
+      - "${APP_PORT:-8080}:8080"
+    volumes:
+      - app-data:/data
+    depends_on:
+      db:
+        condition: service_healthy
+    # Hardened: runs as an unprivileged user without any capabilities, and nothing but
+    # /data and /tmp is writable.
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+  # Nightly pg_dump into the "backups" volume (see docker/backup.sh). Manual dump:
+  #   docker compose exec backup sh /backup.sh now
+  # Restore (into an empty database):
+  #   docker compose exec -T backup sh -c 'pg_restore --clean --if-exists -d "$PGDATABASE"' < file.dump
+  # Copy dumps off the host: docker compose cp backup:/var/lib/postgresql/backups ./backups
+  backup:
+    image: postgres:18-alpine
+    restart: unless-stopped
+    entrypoint: ["sh", "/backup.sh"]
+    user: postgres
+    environment:
+      PGHOST: db
+      PGDATABASE: ${DB_NAME}
+      PGUSER: ${DB_USER}
+      PGPASSWORD: ${DB_PASSWORD}
+      TZ: ${TIME_ZONE:-UTC}
+      BACKUP_TIME: ${BACKUP_TIME:-02:30}
+      BACKUP_KEEP_DAYS: ${BACKUP_KEEP_DAYS:-14}
+    volumes:
+      - ./docker/backup.sh:/backup.sh:ro
+      # Mounted on the image's postgres-owned home, so the new volume is writable for
+      # the postgres user without any capabilities.
+      - backups:/var/lib/postgresql
+    depends_on:
+      db:
+        condition: service_healthy
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+volumes:
+  db-data:
+  app-data:
+  backups:

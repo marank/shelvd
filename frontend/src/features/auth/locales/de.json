@@ -1,0 +1,12 @@
+{
+  "auth": {
+    "loginTitle": "Anmelden",
+    "loginHint": "Melde dich mit deinem Konto an.",
+    "registerTitle": "Konto erstellen",
+    "registerHint": "Nur möglich, wenn die Registrierung auf diesem Server eingeschaltet ist.",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "noAccount": "Noch kein Konto? Registrieren",
+    "haveAccount": "Schon ein Konto? Anmelden"
+  }
+}

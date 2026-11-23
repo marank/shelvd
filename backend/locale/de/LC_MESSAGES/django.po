@@ -1,0 +1,667 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-23 23:27+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/accounts/api/auth.py:25
+msgid "Please sign in."
+msgstr "Bitte melde dich an."
+
+#: apps/accounts/api/auth.py:32
+msgid "CSRF verification failed."
+msgstr "CSRF-Prüfung fehlgeschlagen."
+
+#: apps/accounts/api/auth.py:46
+msgid "Invalid username or password."
+msgstr "Benutzername oder Passwort ist falsch."
+
+#: apps/accounts/api/auth.py:55
+msgid "Registration is disabled."
+msgstr "Die Registrierung ist deaktiviert."
+
+#: apps/accounts/selectors/roles.py:17 apps/catalog/services/review.py:36
+msgid "Only admins can change the catalog."
+msgstr "Nur Admins können den Katalog ändern."
+
+#: apps/accounts/services/registration.py:26
+msgid "This username is not available."
+msgstr "Dieser Benutzername ist nicht verfügbar."
+
+#: apps/catalog/api/terms.py:56
+msgid "Only companies have these details."
+msgstr "Nur Firmen haben diese Angaben."
+
+#: apps/catalog/api/terms.py:60
+msgid "Only series belong to a franchise."
+msgstr "Nur Serien gehören zu einem Franchise."
+
+#: apps/catalog/apps.py:10
+msgid "Catalog"
+msgstr "Katalog"
+
+#: apps/catalog/models/barcode.py:30
+msgid "barcode"
+msgstr "Barcode"
+
+#: apps/catalog/models/barcode.py:31
+msgid "barcodes"
+msgstr "Barcodes"
+
+#: apps/catalog/models/company.py:14
+msgid "founded"
+msgstr "gegründet"
+
+#: apps/catalog/models/company.py:15
+msgid "dissolved"
+msgstr "aufgelöst"
+
+#: apps/catalog/models/company.py:16
+msgid "country"
+msgstr "Land"
+
+#: apps/catalog/models/company.py:17
+msgid "headquarters"
+msgstr "Sitz"
+
+#: apps/catalog/models/company.py:18
+msgid "website"
+msgstr "Website"
+
+#: apps/catalog/models/company.py:21
+msgid "parent company"
+msgstr "Mutterfirma"
+
+#: apps/catalog/models/company.py:31
+msgid "company"
+msgstr "Firma"
+
+#: apps/catalog/models/company.py:32
+msgid "companies"
+msgstr "Firmen"
+
+#: apps/catalog/models/franchise.py:17 apps/catalog/models/series.py:21
+msgid "franchise"
+msgstr "Franchise"
+
+#: apps/catalog/models/franchise.py:18
+msgid "franchises"
+msgstr "Franchises"
+
+#: apps/catalog/models/genre.py:15
+msgid "genre"
+msgstr "Genre"
+
+#: apps/catalog/models/genre.py:16
+msgid "genres"
+msgstr "Genres"
+
+#: apps/catalog/models/platform.py:46
+msgid "picture"
+msgstr "Bild"
+
+#: apps/catalog/models/platform.py:47
+msgid "photo"
+msgstr "Foto"
+
+#: apps/catalog/models/platform.py:52 apps/catalog/models/term.py:24
+msgid "descriptions"
+msgstr "Beschreibungen"
+
+#: apps/catalog/models/platform.py:53
+msgid "generation"
+msgstr "Generation"
+
+#: apps/catalog/models/platform.py:54
+msgid "discontinued"
+msgstr "eingestellt"
+
+#: apps/catalog/models/platform.py:61
+msgid "platform"
+msgstr "Plattform"
+
+#: apps/catalog/models/platform.py:62
+msgid "platforms"
+msgstr "Plattformen"
+
+#: apps/catalog/models/release.py:80
+msgid "release"
+msgstr "Veröffentlichung"
+
+#: apps/catalog/models/release.py:81
+msgid "releases"
+msgstr "Veröffentlichungen"
+
+#: apps/catalog/models/review.py:11
+msgid "unreviewed"
+msgstr "ungeprüft"
+
+#: apps/catalog/models/review.py:12
+msgid "reviewed"
+msgstr "geprüft"
+
+#: apps/catalog/models/series.py:26 apps/catalog/models/series.py:27
+msgid "series"
+msgstr "Serie"
+
+#: apps/catalog/models/work.py:60
+msgid "work"
+msgstr "Werk"
+
+#: apps/catalog/models/work.py:61
+msgid "works"
+msgstr "Werke"
+
+#: apps/catalog/models/work_fact.py:35
+msgid "game fact"
+msgstr "Spiel-Angabe"
+
+#: apps/catalog/models/work_fact.py:36
+msgid "game facts"
+msgstr "Spiel-Angaben"
+
+#: apps/catalog/services/merge.py:68
+msgid "The release already belongs to this game."
+msgstr "Die Ausgabe gehört bereits zu diesem Spiel."
+
+#: apps/catalog/services/merge.py:95
+msgid "A game can't be merged into itself."
+msgstr "Ein Spiel kann nicht mit sich selbst zusammengeführt werden."
+
+#: apps/catalog/services/platforms.py:38
+msgid "Enter a name."
+msgstr "Gib einen Namen ein."
+
+#: apps/catalog/services/platforms.py:41
+msgid "Choose a colour like #e60012."
+msgstr "Wähle eine Farbe wie #e60012."
+
+#: apps/catalog/services/platforms.py:44
+msgid "Unknown icon."
+msgstr "Unbekanntes Symbol."
+
+#: apps/catalog/services/platforms.py:47
+msgid "Enter a console generation from 1 to 20."
+msgstr "Gib eine Konsolengeneration von 1 bis 20 an."
+
+#: apps/catalog/services/platforms.py:50
+msgid "Enter a year with four digits."
+msgstr "Gib ein Jahr mit vier Stellen an."
+
+#: apps/catalog/services/platforms.py:56 apps/catalog/services/releases.py:35
+msgid "Unknown platform."
+msgstr "Unbekannte Plattform."
+
+#: apps/catalog/services/platforms.py:75
+msgid "A platform with this name already exists."
+msgstr "Eine Plattform mit diesem Namen gibt es schon."
+
+#: apps/catalog/services/platforms.py:98
+msgid "This platform is still in use and can't be deleted."
+msgstr "Diese Plattform wird noch verwendet und kann nicht gelöscht werden."
+
+#: apps/catalog/services/releases.py:43 apps/catalog/services/releases.py:107
+msgid "A title is required."
+msgstr "Ein Titel ist erforderlich."
+
+#: apps/catalog/services/releases.py:47
+msgid "Unknown work."
+msgstr "Unbekanntes Werk."
+
+#: apps/catalog/services/releases.py:128 apps/providers/api/lookup.py:78
+msgid "This is not a valid barcode."
+msgstr "Das ist kein gültiger Barcode."
+
+#: apps/catalog/services/releases.py:132
+msgid "This barcode already belongs to another release."
+msgstr "Dieser Barcode gehört bereits zu einer anderen Veröffentlichung."
+
+#: apps/catalog/services/terms.py:53
+msgid "A picked entry doesn't exist (any more)."
+msgstr "Ein ausgewählter Eintrag existiert nicht (mehr)."
+
+#: apps/catalog/services/terms.py:81
+msgid "The name can't be empty."
+msgstr "Der Name darf nicht leer sein."
+
+#: apps/catalog/services/terms.py:88
+#, python-format
+msgid "“%(name)s” already exists. Merge the two instead."
+msgstr "„%(name)s“ gibt es schon. Führ die beiden lieber zusammen."
+
+#: apps/catalog/services/terms.py:105
+#, python-format
+msgid "Unknown language: %(code)s"
+msgstr "Unbekannte Sprache: %(code)s"
+
+#: apps/catalog/services/terms.py:118
+msgid "A company can't belong to itself."
+msgstr "Eine Firma kann nicht zu sich selbst gehören."
+
+#: apps/catalog/services/terms.py:130
+msgid "The website must be an http(s) address."
+msgstr "Die Website muss eine http(s)-Adresse sein."
+
+#: apps/catalog/services/terms.py:137
+msgid "The country must be a two-letter code (DE, JP …)."
+msgstr "Das Land muss ein Code aus zwei Buchstaben sein (DE, JP …)."
+
+#: apps/catalog/services/terms.py:145
+msgid "Years have four digits."
+msgstr "Jahre haben vier Stellen."
+
+#: apps/catalog/services/terms.py:147
+msgid "A company can't be dissolved before it was founded."
+msgstr "Eine Firma kann nicht vor ihrer Gründung aufgelöst werden."
+
+#: apps/catalog/services/terms.py:192
+msgid "An entry can't be merged into itself."
+msgstr "Ein Eintrag kann nicht mit sich selbst zusammengeführt werden."
+
+#: apps/collection/api/libraries.py:76 apps/collection/api/overviews.py:64
+#: apps/collection/api/people.py:49 apps/collection/services/libraries.py:17
+#: apps/collection/services/locations.py:29 apps/sharing/api/lists.py:66
+msgid "A name is required."
+msgstr "Ein Name ist erforderlich."
+
+#: apps/collection/api/overviews.py:45
+msgid "Invalid fields."
+msgstr "Ungültige Felder."
+
+#: apps/collection/api/people.py:74
+msgid "This person has loans; they stay in the history."
+msgstr "Diese Person hat Ausleihen; sie bleiben im Verlauf erhalten."
+
+#: apps/collection/apps.py:10
+msgid "Collection"
+msgstr "Sammlung"
+
+#: apps/collection/models/choices.py:8
+msgid "nothing"
+msgstr "nichts"
+
+#: apps/collection/models/choices.py:9
+msgid "only whether a copy is lent"
+msgstr "nur ob ein Exemplar verliehen ist"
+
+#: apps/collection/models/item.py:80
+msgid "item"
+msgstr "Exemplar"
+
+#: apps/collection/models/item.py:81
+msgid "items"
+msgstr "Exemplare"
+
+#: apps/collection/models/library.py:27
+msgid "library"
+msgstr "Bibliothek"
+
+#: apps/collection/models/library.py:28
+msgid "libraries"
+msgstr "Bibliotheken"
+
+#: apps/collection/models/library.py:48
+msgid "library member"
+msgstr "Bibliotheksmitglied"
+
+#: apps/collection/models/library.py:49
+msgid "library members"
+msgstr "Bibliotheksmitglieder"
+
+#: apps/collection/models/loan.py:30
+msgid "loan"
+msgstr "Ausleihe"
+
+#: apps/collection/models/loan.py:31
+msgid "loans"
+msgstr "Ausleihen"
+
+#: apps/collection/models/location.py:24
+msgid "location"
+msgstr "Ort"
+
+#: apps/collection/models/location.py:25
+msgid "locations"
+msgstr "Orte"
+
+#: apps/collection/models/overview.py:42
+msgid "overview"
+msgstr "Übersicht"
+
+#: apps/collection/models/overview.py:43
+msgid "overviews"
+msgstr "Übersichten"
+
+#: apps/collection/models/person.py:23
+msgid "person"
+msgstr "Person"
+
+#: apps/collection/models/person.py:24
+msgid "people"
+msgstr "Personen"
+
+#: apps/collection/models/tag.py:18
+msgid "tag"
+msgstr "Tag"
+
+#: apps/collection/models/tag.py:19
+msgid "tags"
+msgstr "Tags"
+
+#: apps/collection/selectors/conditions.py:134
+msgid "Invalid filter."
+msgstr "Ungültiger Filter."
+
+#: apps/collection/selectors/filters.py:10
+#, python-format
+msgid "Unknown field: %(field)s"
+msgstr "Unbekanntes Feld: %(field)s"
+
+#: apps/collection/selectors/filters.py:20
+msgid "Filters look like field:value."
+msgstr "Filter haben die Form feld:wert."
+
+#: apps/collection/selectors/sorting.py:77
+#: apps/collection/selectors/sorting.py:81
+msgid "Unknown sort order."
+msgstr "Unbekannte Sortierung."
+
+#: apps/collection/services/access.py:38
+msgid "Library not found."
+msgstr "Bibliothek nicht gefunden."
+
+#: apps/collection/services/access.py:41
+msgid "You are not allowed to do this in this library."
+msgstr "Das darfst du in dieser Bibliothek nicht."
+
+#: apps/collection/services/access.py:57
+msgid "Only editors of a library can add games."
+msgstr "Nur wer eine Bibliothek bearbeitet, kann Spiele hinzufügen."
+
+#: apps/collection/services/items.py:24 apps/sharing/services/lists.py:20
+#: apps/tracking/services/tracking.py:55
+msgid "Unknown release."
+msgstr "Unbekannte Veröffentlichung."
+
+#: apps/collection/services/items.py:28
+#: apps/collection/services/locations.py:17
+msgid "Unknown location."
+msgstr "Unbekannter Ort."
+
+#: apps/collection/services/items.py:31 apps/collection/services/loans.py:20
+msgid "Unknown person."
+msgstr "Unbekannte Person."
+
+#: apps/collection/services/libraries.py:21
+msgid "By platform"
+msgstr "Nach Plattform"
+
+#: apps/collection/services/libraries.py:51
+msgid "No user with this name."
+msgstr "Kein Benutzer mit diesem Namen."
+
+#: apps/collection/services/libraries.py:53
+msgid "The owner is already part of the library."
+msgstr "Der Eigentümer gehört bereits zur Bibliothek."
+
+#: apps/collection/services/libraries.py:58
+msgid "This user is already a member."
+msgstr "Dieser Benutzer ist bereits Mitglied."
+
+#: apps/collection/services/loans.py:16 apps/sharing/services/lists.py:28
+msgid "Unknown item."
+msgstr "Unbekanntes Exemplar."
+
+#: apps/collection/services/loans.py:26
+msgid "Who borrows it?"
+msgstr "Wer leiht es aus?"
+
+#: apps/collection/services/loans.py:37
+msgid "This item is already lent out."
+msgstr "Dieses Exemplar ist bereits verliehen."
+
+#: apps/collection/services/loans.py:42
+msgid "This loan is already closed."
+msgstr "Diese Ausleihe ist bereits abgeschlossen."
+
+#: apps/collection/services/locations.py:21
+msgid "A location cannot be placed inside itself."
+msgstr "Ein Ort kann nicht in sich selbst liegen."
+
+#: apps/core/services/images.py:31 apps/core/services/images.py:101
+msgid "The image is too large."
+msgstr "Das Bild ist zu groß."
+
+#: apps/core/services/images.py:37 apps/core/services/images.py:56
+#: apps/core/services/images.py:58 apps/core/services/images.py:88
+msgid "This file is not an image."
+msgstr "Diese Datei ist kein Bild."
+
+#: apps/core/services/images.py:39
+msgid "Only JPEG, PNG and WebP images are supported."
+msgstr "Nur JPEG-, PNG- und WebP-Bilder werden unterstützt."
+
+#: apps/core/services/images.py:61 apps/core/services/images.py:71
+msgid "This SVG contains scripts or links and can't be used."
+msgstr "Dieses SVG enthält Skripte oder Links und kann nicht verwendet werden."
+
+#: apps/core/services/images.py:90
+msgid "Only SVG, JPEG, PNG and WebP images are supported."
+msgstr "Nur SVG-, JPEG-, PNG- und WebP-Bilder werden unterstützt."
+
+#: apps/providers/api/integrations.py:23
+msgid "Only admins can change integrations."
+msgstr "Nur Admins können Integrationen ändern."
+
+#: apps/providers/api/integrations.py:91
+#: apps/providers/services/integrations.py:172
+msgid "Unknown integration."
+msgstr "Unbekannte Integration."
+
+#: apps/providers/api/integrations.py:93
+msgid "Fill in all required fields first."
+msgstr "Bitte zuerst alle Pflichtfelder ausfüllen."
+
+#: apps/providers/api/lookup.py:90
+msgid "Enter a title to search for."
+msgstr "Gib einen Titel für die Suche ein."
+
+#: apps/providers/api/lookup.py:104
+msgid "This source is not configured."
+msgstr "Diese Quelle ist nicht eingerichtet."
+
+#: apps/providers/api/lookup.py:114 apps/providers/services/descriptions.py:100
+#: apps/providers/services/descriptions.py:113
+#: apps/providers/services/descriptions.py:317
+#: apps/providers/services/metadata.py:94
+#: apps/providers/services/metadata.py:363
+msgid "The source did not answer. Try again later."
+msgstr "Die Quelle antwortet nicht. Versuche es später erneut."
+
+#: apps/providers/api/lookup.py:116 apps/providers/services/metadata.py:365
+msgid "The source does not know this game."
+msgstr "Die Quelle kennt dieses Spiel nicht."
+
+#: apps/providers/apps.py:10
+msgid "Providers"
+msgstr "Datenquellen"
+
+#: apps/providers/models/integration.py:26
+msgid "integration"
+msgstr "Integration"
+
+#: apps/providers/models/integration.py:27
+msgid "integrations"
+msgstr "Integrationen"
+
+#: apps/providers/services/covers.py:169
+msgid "Unknown cover."
+msgstr "Unbekanntes Cover."
+
+#: apps/providers/services/covers.py:182 apps/providers/services/covers.py:185
+msgid "The cover couldn't be loaded."
+msgstr "Das Cover konnte nicht geladen werden."
+
+#: apps/providers/services/descriptions.py:92
+#: apps/providers/services/facts.py:185 apps/providers/services/facts.py:198
+#: apps/providers/services/metadata.py:85
+msgid "This integration is switched off."
+msgstr "Diese Integration ist ausgeschaltet."
+
+#: apps/providers/services/descriptions.py:117
+msgid "The source has no text for this entry."
+msgstr "Die Quelle hat keinen Text zu diesem Eintrag."
+
+#: apps/providers/services/descriptions.py:300
+#: apps/providers/services/descriptions.py:334
+msgid "Unknown picture."
+msgstr "Unbekanntes Bild."
+
+#: apps/providers/services/descriptions.py:305
+msgid "The picture couldn't be loaded."
+msgstr "Das Bild konnte nicht geladen werden."
+
+#: apps/providers/services/facts.py:205
+msgid "The source doesn't know this entry."
+msgstr "Die Quelle kennt diesen Eintrag nicht."
+
+#: apps/providers/services/integrations.py:217
+#, python-format
+msgid "Unknown setting: %(name)s"
+msgstr "Unbekannte Einstellung: %(name)s"
+
+#: apps/providers/services/integrations.py:246
+#: apps/providers/services/integrations.py:248
+#, python-format
+msgid "%(name)s must be a number."
+msgstr "%(name)s muss eine Zahl sein."
+
+#: apps/providers/sources/hltb.py:166 apps/providers/sources/opencritic.py:84
+#, python-format
+msgid "%(n)d results for “%(query)s”"
+msgstr "%(n)d Treffer für „%(query)s“"
+
+#: apps/providers/sources/igdb.py:260
+#: apps/providers/sources/screenscraper.py:132
+#: apps/providers/sources/thegamesdb.py:90
+#: apps/providers/sources/wikipedia.py:308
+msgid "OK"
+msgstr "OK"
+
+#: apps/providers/sources/igdb.py:381
+#, python-format
+msgid "Generation %(n)s"
+msgstr "Generation %(n)s"
+
+#: apps/providers/sources/igdb.py:381
+msgid "Platform"
+msgstr "Plattform"
+
+#: apps/providers/sources/igdb.py:387 apps/providers/sources/igdb.py:454
+msgid "Logo"
+msgstr "Logo"
+
+#: apps/providers/sources/igdb.py:446
+#, python-format
+msgid "Company, founded %(year)s"
+msgstr "Firma, gegründet %(year)s"
+
+#: apps/providers/sources/igdb.py:448
+msgid "Company"
+msgstr "Firma"
+
+#: apps/providers/sources/screenscraper.py:38
+msgid ""
+"ScreenScraper wants developer credentials for this. Request them in the "
+"ScreenScraper forum and enter them here."
+msgstr ""
+"ScreenScraper verlangt dafür Entwickler-Zugangsdaten. Beantrage sie im "
+"ScreenScraper-Forum und trage sie hier ein."
+
+#: apps/providers/sources/screenscraper.py:42
+msgid "ScreenScraper doesn't accept the user name or password."
+msgstr "ScreenScraper akzeptiert Benutzername oder Passwort nicht."
+
+#: apps/providers/sources/screenscraper.py:44
+#, python-format
+msgid "ScreenScraper request failed (HTTP %(status)s)."
+msgstr "ScreenScraper-Anfrage fehlgeschlagen (HTTP %(status)s)."
+
+#: apps/providers/sources/screenscraper.py:47
+msgid "ScreenScraper returned an unexpected response."
+msgstr "ScreenScraper hat unerwartet geantwortet."
+
+#: apps/providers/sources/screenscraper.py:86
+msgid ""
+"ScreenScraper did not answer in time – it is often busy. Try again later."
+msgstr ""
+"ScreenScraper hat nicht rechtzeitig geantwortet – der Dienst ist oft "
+"überlastet. Versuche es später erneut."
+
+#: apps/providers/sources/screenscraper.py:133
+#, python-format
+msgid "OK – %(used)s/%(limit)s requests today"
+msgstr "OK – heute %(used)s von %(limit)s Abfragen"
+
+#: apps/providers/sources/thegamesdb.py:91
+#, python-format
+msgid "OK – %(n)s requests left this month"
+msgstr "OK – noch %(n)s Abfragen in diesem Monat"
+
+#: apps/providers/sources/wikipedia.py:711
+#: apps/providers/sources/wikipedia.py:752
+msgid "Source: Wikipedia, CC BY-SA 4.0"
+msgstr "Quelle: Wikipedia, CC BY-SA 4.0"
+
+#: apps/sharing/apps.py:10
+msgid "Sharing"
+msgstr "Teilen"
+
+#: apps/sharing/models/custom_list.py:20
+msgid "list"
+msgstr "Liste"
+
+#: apps/sharing/models/custom_list.py:21
+msgid "lists"
+msgstr "Listen"
+
+#: apps/sharing/models/custom_list.py:44
+msgid "list entry"
+msgstr "Listeneintrag"
+
+#: apps/sharing/models/custom_list.py:45
+msgid "list entries"
+msgstr "Listeneinträge"
+
+#: apps/sharing/services/lists.py:40
+msgid "This game is already on the list."
+msgstr "Dieses Spiel steht bereits auf der Liste."
+
+#: apps/tracking/apps.py:10
+msgid "Tracking"
+msgstr "Vormerkungen"
+
+#: apps/tracking/models/tracking.py:44
+msgid "tracked release"
+msgstr "Vormerkung"
+
+#: apps/tracking/models/tracking.py:45
+msgid "tracked releases"
+msgstr "Vormerkungen"
+
+#: apps/tracking/services/tracking.py:63
+msgid "You already track this release."
+msgstr "Diese Veröffentlichung hast du bereits vorgemerkt."

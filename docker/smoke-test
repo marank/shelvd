@@ -1,0 +1,33 @@
+#!/bin/sh
+# Smoke test of a running container, run inside it — the one place for these probes:
+#   CI:     docker exec <container> sh /usr/local/bin/smoke-test
+#   local:  docker compose exec -T app sh /usr/local/bin/smoke-test
+# nginx serves the SPA, static files and the API, /admin is closed (ADMIN_ENABLED unset),
+# every supervisord program (gunicorn, scheduler, nginx) runs, nothing runs as root, the
+# root filesystem is read-only and /data is writable. Stops at the first failure.
+set -eu
+cd /app
+
+fail() { echo "smoke test failed: $*" >&2; exit 1; }
+probe() { python /usr/local/bin/healthcheck "$1" "$2" || fail "$1 did not answer $2"; }
+
+probe /api/health 200
+probe / 200
+probe /some/client/route 200
+probe /django-static/admin/css/base.css 200
+probe /admin/ 404
+probe /api/auth/me 401
+
+status=$(supervisorctl -c /etc/supervisord.conf status || true)
+echo "$status"
+[ -n "$status" ] || fail "supervisorctl gave no status"
+if echo "$status" | grep -v RUNNING >/dev/null; then fail "not every program is running"; fi
+
+[ "$(id -u)" != 0 ] || fail "the container runs as root"
+if grep -l '^Uid:[[:space:]]*0[[:space:]]' /proc/[0-9]*/status 2>/dev/null | grep -q .; then
+  fail "a process runs as root"
+fi
+if touch /app/.probe 2>/dev/null; then fail "the root filesystem is writable"; fi
+mkdir /data/.probe && rmdir /data/.probe || fail "/data is not writable"
+
+echo "smoke test passed"

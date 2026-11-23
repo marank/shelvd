@@ -1,0 +1,138 @@
+{
+  "integrations": {
+    "title": "Integrationen",
+    "subtitle": "Externe Dienste für Spieldaten, Barcodes, Spielzeiten, Wertungen und Cover. Alles ist optional – ohne sie trägst du Spiele von Hand ein.",
+    "adminOnly": "Einrichten können nur Admins.",
+    "setUp": "Einrichten",
+    "status": {
+      "active": "Aktiv",
+      "off": "Aus",
+      "incomplete": "Unvollständig"
+    },
+    "kinds": {
+      "metadata": "Spieldaten",
+      "facts": "Spielzeit & Wertung",
+      "covers": "Cover",
+      "playtime": "Deine Spielzeit"
+    },
+    "unofficial": "Inoffiziell",
+    "unofficialText": "Keine offizielle Schnittstelle: kann jederzeit ausfallen. Bereits geladene Werte bleiben dann erhalten.",
+    "lastOk": "Zuletzt erfolgreich: {time}",
+    "lastError": "Letzter Fehler ({time}): {message}",
+    "lastRun": "Letzte Aktualisierung im Hintergrund: {time}",
+    "docs": "Zugang beantragen",
+    "local": {
+      "title": "Eigene Daten",
+      "text": "Bestätigte Barcodes, Cover und Spielzeiten werden lokal gespeichert und für alle wiederverwendet – jede Quelle wird nur einmal gefragt."
+    },
+    "about": {
+      "igdb": "Spieldaten, regionale Erscheinungstermine und Cover für die Suche. Kostenlos für nicht-kommerzielle Nutzung (Twitch-Konto nötig).",
+      "wikipedia": "Deutsche (oder englische) Titel, Beschreibungen und Erstveröffentlichung beim Abgleichen – je nach Sprache der Oberfläche. Ohne Schlüssel; Texte stehen unter CC BY-SA, die Quelle wird mitgespeichert. Ergänzt nur vorhandene Spiele, fügt keine hinzu.",
+      "hltb": "Wie lange ein Spiel dauert: Story, mit Extras, 100 %. Zeigt die Zeiten am Spiel und als Felder zum Sortieren und Filtern.",
+      "opencritic": "Wertungen der Fachpresse (Top-Critic-Schnitt, Empfehlungsquote). Über RapidAPI, mit kostenlosem Einstieg.",
+      "thegamesdb": "Cover (Vorderseite), auch regionale. Kostenloser API-Schlüssel mit Monatskontingent.",
+      "screenscraper": "Sehr gute regionale Cover, besonders für Handhelds und Retro. Ein Benutzerkonto reicht für den Anfang; Entwickler-Zugangsdaten (bei ScreenScraper anzufragen) sind optional."
+    },
+    "attribution": {
+      "igdb": "Spieldaten von IGDB.com",
+      "wikipedia": "Texte von Wikipedia (CC BY-SA 4.0)",
+      "hltb": "Spielzeiten von HowLongToBeat.com",
+      "opencritic": "Wertungen von OpenCritic.com",
+      "thegamesdb": "Cover von TheGamesDB.net",
+      "screenscraper": "Cover von ScreenScraper.fr"
+    },
+    "fields": {
+      "client_id": "Client-ID",
+      "client_secret": "Client-Secret",
+      "key": "API-Schlüssel",
+      "rapidapi_key": "RapidAPI-Schlüssel",
+      "api_key": "API-Schlüssel",
+      "dev_id": "Entwickler-ID",
+      "dev_password": "Entwickler-Passwort",
+      "user": "Benutzername",
+      "password": "Passwort",
+      "max_age_hours": "Gilt als veraltet nach",
+      "periodic": "Regelmäßig im Hintergrund aktualisieren",
+      "periodic_hours": "Alle",
+      "batch": "Spiele pro Durchlauf"
+    },
+    "edit": {
+      "title": "{name} einrichten",
+      "enabled": "Eingeschaltet",
+      "enabledText": "Ausgeschaltet bleibt alles Gespeicherte erhalten, es wird nur nichts Neues abgefragt.",
+      "access": "Zugang",
+      "accessText": "Schlüssel werden verschlüsselt gespeichert und nicht wieder angezeigt. Leer lassen = unverändert.",
+      "secretSet": "Gespeichert ({masked})",
+      "secretMissing": "Noch nicht gesetzt",
+      "remove": "Entfernen",
+      "removed": "Wird beim Speichern entfernt",
+      "freshness": "Aktualität",
+      "freshnessText": "Wann gespeicherte Werte als veraltet gelten. Veraltete Werte werden beim Öffnen eines Spiels neu geholt.",
+      "periodicText": "Holt veraltete Werte auch ohne Aufruf nach – schonend, in kleinen Portionen.",
+      "hours": "Stunden",
+      "days": "Tage",
+      "test": "Speichern und testen",
+      "testOk": "Verbindung klappt: {message}",
+      "testFailed": "Verbindung fehlgeschlagen: {message}",
+      "saved": "{name} gespeichert"
+    },
+    "facts": {
+      "title": "Zuordnung: {source}",
+      "description": "Welcher Eintrag bei {source} gehört zu diesem Spiel? Deine Wahl bleibt gespeichert.",
+      "search": "Suchen",
+      "choose": "Diesen nehmen",
+      "chosen": "Zuordnung gespeichert",
+      "auto": "Automatisch zuordnen",
+      "autoDone": "Automatisch neu zugeordnet",
+      "none": "Nichts gefunden. Versuch einen anderen Suchbegriff.",
+      "current": "Aktuell",
+      "notFound": "Bei {source} nicht gefunden",
+      "match": "Zuordnung ändern",
+      "open": "Auf {source} ansehen",
+      "refreshed": "vor {time} geladen"
+    },
+    "covers": {
+      "title": "Cover suchen",
+      "description": "Cover aus TheGamesDB und ScreenScraper für diese Ausgabe. Das gewählte wird lokal gespeichert und gilt für alle Exemplare dieser Ausgabe.",
+      "descriptionCopy": "Cover aus TheGamesDB und ScreenScraper. Das gewählte gilt nur für dieses Exemplar, der Katalog bleibt unverändert.",
+      "take": "Dieses Cover nehmen",
+      "taken": "Cover übernommen",
+      "none": "Keine Cover gefunden. Versuch es oben mit einem anderen Suchbegriff, z. B. ohne Edition.",
+      "noSources": "Keine Cover-Quelle eingerichtet. Ein Admin kann TheGamesDB oder ScreenScraper unter „Integrationen“ einschalten.",
+      "search": "Cover suchen …"
+    },
+    "metadata": {
+      "title": "Spieldaten abgleichen",
+      "description": "Welcher Eintrag bei {source} ist dieses Spiel? Danach siehst du, was sich ändern würde, und entscheidest selbst.",
+      "linked": "Verknüpft mit {source}",
+      "refill": "Erneut abgleichen",
+      "fields": {
+        "title": "Titel",
+        "summary": "Beschreibung",
+        "first_release_date": "Erstveröffentlichung",
+        "genres": "Genres",
+        "developers": "Entwickler",
+        "release_date": "Erscheinungsdatum",
+        "publisher": "Publisher",
+        "cover": "Cover"
+      },
+      "reviewHint": "Vorausgewählt sind leere Felder und genauere Daten. Was nur abweicht, übernimmst du, wenn du es anhakst.",
+      "current": "Bisher",
+      "apply": "Mit Eintrag verknüpfen | 1 Änderung übernehmen | {n} Änderungen übernehmen",
+      "applied": "Nichts übernommen | 1 Änderung übernommen | {n} Änderungen übernommen",
+      "linkedOnly": "Mit {source} verknüpft, nichts geändert",
+      "same": "Alles stimmt schon mit {source} überein.",
+      "kinds": {
+        "fill": "leer",
+        "precise": "genauer",
+        "differs": "abweichend"
+      },
+      "titleWith": "Abgleich mit {source}",
+      "source": "Quelle",
+      "offers": {
+        "igdb": "Titel, Beschreibung (englisch), Termine je Plattform, Firmen, Genres, Cover",
+        "wikipedia": "Titel, Beschreibung und Erstveröffentlichung in deiner Sprache"
+      }
+    }
+  }
+}

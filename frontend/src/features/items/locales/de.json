@@ -1,0 +1,93 @@
+{
+  "items": {
+    "thisCopy": "Dieses Exemplar",
+    "theGame": "Das Spiel",
+    "editCopy": "Exemplar bearbeiten",
+    "uploadCover": "Cover hochladen",
+    "coverUploaded": "Cover gespeichert",
+    "coverSource": "Quelle: {source}",
+    "commaHint": "mit Komma trennen",
+    "addBarcode": "Barcode hinzufügen",
+    "saved": "Gespeichert",
+    "lend": "Verleihen",
+    "lendTitle": "„{title}“ verleihen",
+    "lent": "Verliehen",
+    "newPerson": "Neue Person …",
+    "dueOn": "Zurück bis",
+    "since": "seit {date}",
+    "overdue": "überfällig seit {date}",
+    "due": "fällig {date}",
+    "giveBack": "Zurück",
+    "returned": "Als zurückgegeben markiert",
+    "loanHistory": "Frühere Ausleihen",
+    "deleteCopy": "Exemplar löschen",
+    "deleteHint": "„{title}“ wird aus dieser Bibliothek entfernt. Die Spieldaten im Katalog bleiben erhalten.",
+    "deleted": "Exemplar gelöscht",
+    "ownCover": "Eigenes Cover",
+    "catalogCover": "Katalog-Cover verwenden",
+    "coverReset": "Katalog-Cover wird wieder verwendet",
+    "placeAndOwner": "Ort und Inhaber",
+    "placeAndOwnerHint": "Wo das Exemplar liegt und wem es gehört.",
+    "purchase": "Kauf, Wert und Notizen",
+    "borrowerHint": "Bekannte Person auswählen oder einen neuen Namen eintragen.",
+    "loanDetails": "Ausleihe",
+    "tagsHint": "z. B. Steelbook, signiert – mit Komma trennen",
+    "valueHint": "Kaufpreis und heutiger Sammlerwert; der Explorer summiert die Werte.",
+    "allDetails": "Alles zu diesem Exemplar",
+    "otherCopies": "Weitere Exemplare dieses Spiels",
+    "stats": {
+      "value": "Wert",
+      "paid": "Gekauft für",
+      "change": "Entwicklung",
+      "acquired": "Erworben",
+      "added": "Hinzugefügt"
+    },
+    "tiles": {
+      "place": "Standort",
+      "noPlace": "Noch keinem Ort zugeordnet.",
+      "state": "Zustand",
+      "noState": "Noch nichts erfasst.",
+      "loans": "Verleih",
+      "lentNow": "Verliehen an {name} seit {date}",
+      "lentTimes": "{n}× verliehen | {n}× verliehen",
+      "lastReturned": "Zuletzt bei {name}, zurück am {date}"
+    },
+    "overrides": {
+      "title": "Abweichungen von der Ausgabe",
+      "hint": "Leer = wie die Ausgabe im Katalog. Gilt nur für dieses Exemplar; der gemeinsame Katalog bleibt unverändert.",
+      "useCatalog": "Wert der Ausgabe verwenden",
+      "none": "keine",
+      "catalog": "Ausgabe",
+      "ownDate": "Eigenes Erscheinungsdatum",
+      "current": "Weicht ab bei: {fields}",
+      "resetAll": "Alles auf die Ausgabe zurücksetzen",
+      "resetDone": "Alles wieder wie die Ausgabe",
+      "fields": {
+        "title": "Titel",
+        "cover": "Cover",
+        "edition": "Edition",
+        "region": "Region",
+        "release_date": "Datum"
+      },
+      "badge": "Eigene Werte"
+    },
+    "page": {
+      "details": "Details",
+      "related": "Weiterführend",
+      "allReleases": "Alle Ausgaben dieses Spiels",
+      "thisRelease": "Diese Ausgabe im Katalog",
+      "editGame": "Spiel im Katalog bearbeiten",
+      "editRelease": "Ausgabe im Katalog bearbeiten",
+      "otherCopies": "Weitere Ausgaben in deiner Sammlung",
+      "yes": "Ja",
+      "more": "Mehr lesen",
+      "less": "Weniger",
+      "groups": {
+        "place": "Standort",
+        "state": "Zustand",
+        "purchase": "Kauf"
+      },
+      "thisCopy": "Dieses Exemplar"
+    }
+  }
+}

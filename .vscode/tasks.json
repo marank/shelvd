@@ -1,0 +1,91 @@
+{
+  // Everyday commands for VS Code. Each task only calls a recipe of the justfile, where the
+  // commands live (CI calls the same recipes). AGENTS.md and the docs refer to these labels.
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Dev: start all",
+      "detail": "Django (BACKEND_PORT, 8000) and Vite (APP_PORT, 8080; all interfaces)",
+      "dependsOn": ["Dev: backend", "Dev: frontend"],
+      "dependsOrder": "parallel",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev: backend",
+      "type": "shell",
+      "command": "just dev-backend",
+      "isBackground": true,
+      "presentation": { "group": "dev", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev: frontend",
+      "type": "shell",
+      "command": "just dev-frontend",
+      "isBackground": true,
+      "presentation": { "group": "dev", "panel": "dedicated" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Dev: scheduler",
+      "detail": "Periodic jobs of the integrations (play times, scores)",
+      "type": "shell",
+      "command": "just scheduler",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    { "label": "Setup: install dependencies", "type": "shell", "command": "just setup", "problemMatcher": [] },
+    {
+      "label": "DB: start dev postgres",
+      "detail": "Optional: PostgreSQL like in CI; set DB_TYPE=postgres, DB_HOST=localhost in .env",
+      "type": "shell",
+      "command": "just db-up",
+      "problemMatcher": []
+    },
+    { "label": "DB: migrate", "type": "shell", "command": "just migrate", "problemMatcher": [] },
+    {
+      "label": "DB: make migrations",
+      "detail": "After model changes; commit the migrations",
+      "type": "shell",
+      "command": "just migrations",
+      "problemMatcher": []
+    },
+    {
+      "label": "API: update types",
+      "detail": "After API changes: schema -> frontend/openapi.json -> src/api/schema.d.ts",
+      "type": "shell",
+      "command": "just api-types",
+      "problemMatcher": []
+    },
+    {
+      "label": "i18n: update backend messages",
+      "detail": "Then translate backend/locale/de/LC_MESSAGES/django.po",
+      "type": "shell",
+      "command": "just messages",
+      "problemMatcher": []
+    },
+    { "label": "i18n: compile backend messages", "type": "shell", "command": "just compile-messages", "problemMatcher": [] },
+    {
+      "label": "Check: all",
+      "detail": "Everything CI checks; must pass before a push",
+      "type": "shell",
+      "command": "just check",
+      "group": { "kind": "test", "isDefault": true },
+      "problemMatcher": []
+    },
+    { "label": "Check: changed", "detail": "Before a commit: only what the changed files can break", "type": "shell", "command": "just check-changed", "problemMatcher": [] },
+    { "label": "Check: backend", "type": "shell", "command": "just check-backend", "problemMatcher": [] },
+    { "label": "Check: frontend", "type": "shell", "command": "just check-frontend", "problemMatcher": [] },
+    {
+      "label": "Docker: build and start",
+      "detail": "Local image, production-like stack on http://localhost:8080",
+      "type": "shell",
+      "command": "just docker-up",
+      "problemMatcher": []
+    },
+    { "label": "Docker: backup now", "type": "shell", "command": "just docker-backup", "problemMatcher": [] },
+    { "label": "Docker: logs", "type": "shell", "command": "just docker-logs", "isBackground": true, "problemMatcher": [] },
+    { "label": "Docker: stop", "type": "shell", "command": "just docker-down", "problemMatcher": [] }
+  ]
+}

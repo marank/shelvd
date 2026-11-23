@@ -1,0 +1,34 @@
+{
+  "game": {
+    "actions": {
+      "item": "Actions for this copy",
+      "release": "Actions for this release",
+      "work": "Actions for this game"
+    },
+    "releaseOf": "A release of",
+    "kicker": "Game · {n} release | Game · {n} releases",
+    "inCollection": "In your collection",
+    "worth": "Worth {value}",
+    "addCopy": "Copy",
+    "noCopies": "No copy in your collection yet.",
+    "noCopiesPick": "No copy in your collection yet – pick a release below to add or track one.",
+    "thisRelease": "This release",
+    "theGame": "The game",
+    "allReleases": "All releases",
+    "thisOne": "this one",
+    "owned": "{n} copy | {n} copies",
+    "links": "Further",
+    "toGame": "To the game",
+    "toRelease": "To the release",
+    "toSeries": "To the series",
+    "languageKinds": {
+      "audio": "Voice",
+      "subtitles": "Subtitles",
+      "interface": "Menus"
+    },
+    "allLanguages": "All {n} languages",
+    "fewerLanguages": "Fewer",
+    "showAll": "All {n} {label}",
+    "fewer": "Fewer"
+  }
+}

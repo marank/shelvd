@@ -1,0 +1,92 @@
+{
+  "tracking": {
+    "title": "Upcoming",
+    "subtitle": "What you're watching, have pre-ordered or bought – until it's in a library.",
+    "scope": {
+      "label": "Which entries",
+      "mine": "Mine only",
+      "all": "Others' too"
+    },
+    "filter": "Filter by status",
+    "groups": {
+      "released": "Out now — ready to take over",
+      "year": "Only roughly dated",
+      "tba": "TBA — no date yet"
+    },
+    "count": "{n} entry | {n} entries",
+    "by": "by {user}",
+    "for": "Library: {library}",
+    "takeOver": "Add to library",
+    "statusOf": "Status of “{title}”",
+    "statusChanged": "Status changed: {status}",
+    "emptyTitle": "Nothing upcoming yet",
+    "emptyText": "Games that aren't out yet, that you pre-ordered or already bought are listed here like a release calendar until you move them into a library.",
+    "emptyHint": "Use “Add game” at the top right or “Watch” on any game page.",
+    "noMatch": "No entries with this status.",
+    "delete": {
+      "title": "Remove from Upcoming?",
+      "text": "“{title}” is removed from Upcoming. The game stays in the catalog.",
+      "done": "Removed from Upcoming"
+    },
+    "statusHelp": {
+      "watching": "You're keeping an eye on it, nothing bought yet.",
+      "preordered": "Ordered – it's not out yet or on its way.",
+      "bought": "Bought, but it hasn't arrived yet."
+    },
+    "edit": {
+      "newTitle": "Add to Upcoming",
+      "description": "An entry on Upcoming – not in any library until you take it over.",
+      "readOnly": "This entry belongs to {user}. You can only look at it.",
+      "noRelease": "No release chosen.",
+      "status": "Status",
+      "statusText": "How far along are you with this game?",
+      "purchase": "Purchase",
+      "purchaseText": "Where and when you ordered it. Copied into the copy when you take it over.",
+      "shop": "Shop",
+      "shopPlaceholder": "e.g. Amazon, GameStop",
+      "price": "Price",
+      "orderedOn": "Ordered on",
+      "library": "Library (optional)",
+      "libraryText": "Only if you want: members of this library can see the entry (read-only), and it's preselected when you take it over.",
+      "targetLibrary": "Library",
+      "noLibrary": "None",
+      "notes": "Notes",
+      "created": "“{title}” is now on Upcoming",
+      "saved": "Saved",
+      "release": "Release date",
+      "releaseText": "Applies to this release in the catalog, so for everyone who has or watches it.",
+      "released": "“{title}” is out.",
+      "takeOver": "Take over into a library",
+      "owned": "“{title}” is already in {library}. You no longer need this entry.",
+      "viewIn": "View in {library}"
+    },
+    "takeOverPage": {
+      "description": "The game is here: it becomes a copy and leaves Upcoming.",
+      "target": "Library",
+      "targetText": "Which library the copy goes into.",
+      "copy": "Copy",
+      "copyText": "Details of the new copy. You can change everything later.",
+      "carried": "Carried over",
+      "carriedText": "These details move from the entry into the copy.",
+      "nothingCarried": "No purchase details recorded.",
+      "noLibraries": "You can't add games to any library.",
+      "notMine": "Only the person who tracked the game can take it over.",
+      "save": "Take over",
+      "done": "“{title}” is now in {library}"
+    },
+    "button": {
+      "track": "Watch",
+      "details": "Open",
+      "edit": "Edit",
+      "stop": "Remove from Upcoming",
+      "stopped": "Removed from Upcoming",
+      "menu": "Upcoming: {status}"
+    },
+    "actions": "Actions for “{title}”",
+    "changeDate": "Change date",
+    "viewGame": "View game",
+    "open": "Open",
+    "ownedIn": "Already in {library}",
+    "emptyHintWatch": "With “Watch” on any game's page."
+  }
+}

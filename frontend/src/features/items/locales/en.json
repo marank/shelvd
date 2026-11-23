@@ -1,0 +1,93 @@
+{
+  "items": {
+    "thisCopy": "This copy",
+    "theGame": "The game",
+    "editCopy": "Edit copy",
+    "uploadCover": "Upload cover",
+    "coverUploaded": "Cover saved",
+    "coverSource": "Source: {source}",
+    "commaHint": "separate with commas",
+    "addBarcode": "Add barcode",
+    "saved": "Saved",
+    "lend": "Lend",
+    "lendTitle": "Lend “{title}”",
+    "lent": "Lent out",
+    "newPerson": "New person …",
+    "dueOn": "Due back",
+    "since": "since {date}",
+    "overdue": "overdue since {date}",
+    "due": "due {date}",
+    "giveBack": "Returned",
+    "returned": "Marked as returned",
+    "loanHistory": "Earlier loans",
+    "deleteCopy": "Delete copy",
+    "deleteHint": "“{title}” will be removed from this library. The game data in the catalog stays.",
+    "deleted": "Copy deleted",
+    "ownCover": "Own cover",
+    "catalogCover": "Use catalog cover",
+    "coverReset": "Catalog cover is used again",
+    "placeAndOwner": "Place and owner",
+    "placeAndOwnerHint": "Where the copy is and who it belongs to.",
+    "purchase": "Purchase, value and notes",
+    "borrowerHint": "Pick a known person or enter a new name.",
+    "loanDetails": "Loan",
+    "tagsHint": "e.g. Steelbook, signed – separate with commas",
+    "valueHint": "Price paid and today's collector's value; the explorer adds the values up.",
+    "allDetails": "Everything about this copy",
+    "otherCopies": "Other copies of this game",
+    "stats": {
+      "value": "Value",
+      "paid": "Bought for",
+      "change": "Change",
+      "acquired": "Acquired",
+      "added": "Added"
+    },
+    "tiles": {
+      "place": "Location",
+      "noPlace": "Not placed anywhere yet.",
+      "state": "Condition",
+      "noState": "Nothing recorded yet.",
+      "loans": "Loans",
+      "lentNow": "Lent to {name} since {date}",
+      "lentTimes": "Lent {n}× | Lent {n}×",
+      "lastReturned": "Last with {name}, back on {date}"
+    },
+    "overrides": {
+      "title": "Differences from the release",
+      "hint": "Empty = as the release in the catalog. Only for this copy; the shared catalog stays as it is.",
+      "useCatalog": "Use the release's value",
+      "none": "none",
+      "catalog": "Release",
+      "ownDate": "Own release date",
+      "current": "Differs in: {fields}",
+      "resetAll": "Reset everything to the release",
+      "resetDone": "Everything as the release again",
+      "fields": {
+        "title": "title",
+        "cover": "cover",
+        "edition": "edition",
+        "region": "region",
+        "release_date": "date"
+      },
+      "badge": "Own values"
+    },
+    "page": {
+      "details": "Details",
+      "related": "Further",
+      "allReleases": "All releases of this game",
+      "thisRelease": "This release in the catalog",
+      "editGame": "Edit the game in the catalog",
+      "editRelease": "Edit the release in the catalog",
+      "otherCopies": "Other releases in your collection",
+      "yes": "Yes",
+      "more": "Read more",
+      "less": "Less",
+      "groups": {
+        "place": "Location",
+        "state": "State",
+        "purchase": "Purchase"
+      },
+      "thisCopy": "This copy"
+    }
+  }
+}

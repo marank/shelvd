@@ -1,0 +1,36 @@
+# Fast checks before each commit; the full set is `just check` (and CI).
+# Install once: uv tool run pre-commit install   (bump versions with `pre-commit autoupdate`)
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+        exclude: ^\.vscode/
+      - id: check-merge-conflict
+      - id: check-added-large-files
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.3
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+        files: ^backend/
+      - id: ruff-format
+        files: ^backend/
+
+  - repo: local
+    hooks:
+      - id: frontend-format
+        name: prettier (frontend)
+        language: system
+        entry: bash -c 'cd frontend && pnpm exec prettier --write --ignore-unknown "${@#frontend/}"' --
+        files: ^frontend/
+        exclude: ^frontend/src/api/schema\.d\.ts$
+      - id: frontend-oxlint
+        name: oxlint (frontend)
+        language: system
+        entry: bash -c 'cd frontend && pnpm exec oxlint "${@#frontend/}"' --
+        files: ^frontend/src/.*\.(ts|vue)$

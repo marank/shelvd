@@ -1,0 +1,34 @@
+{
+  "game": {
+    "actions": {
+      "item": "Aktionen für dieses Exemplar",
+      "release": "Aktionen für diese Ausgabe",
+      "work": "Aktionen für dieses Spiel"
+    },
+    "releaseOf": "Eine Ausgabe von",
+    "kicker": "Spiel · {n} Ausgabe | Spiel · {n} Ausgaben",
+    "inCollection": "In deiner Sammlung",
+    "worth": "Wert {value}",
+    "addCopy": "Exemplar",
+    "noCopies": "Noch kein Exemplar in deiner Sammlung.",
+    "noCopiesPick": "Noch kein Exemplar in deiner Sammlung – wähle unten eine Ausgabe, um eins hinzuzufügen oder sie vorzumerken.",
+    "thisRelease": "Diese Ausgabe",
+    "theGame": "Das Spiel",
+    "allReleases": "Alle Ausgaben",
+    "thisOne": "diese",
+    "owned": "{n} Exemplar | {n} Exemplare",
+    "links": "Weiterführend",
+    "toGame": "Zum Spiel",
+    "toRelease": "Zur Ausgabe",
+    "toSeries": "Zur Reihe",
+    "languageKinds": {
+      "audio": "Ton",
+      "subtitles": "Untertitel",
+      "interface": "Menüs"
+    },
+    "allLanguages": "Alle {n} Sprachen",
+    "fewerLanguages": "Weniger",
+    "showAll": "Alle {n} {label}",
+    "fewer": "Weniger"
+  }
+}

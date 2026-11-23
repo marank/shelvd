@@ -1,0 +1,157 @@
+{
+  "terms": {
+    "companies": {
+      "title": "Firmen",
+      "one": "Firma",
+      "subtitle": "Publisher und Entwickler – für alle gleich, wie der ganze Katalog.",
+      "uses": "{n} Spiel entwickelt oder Ausgabe veröffentlicht | {n} Spiele entwickelt oder Ausgaben veröffentlicht",
+      "edit": "Firma bearbeiten",
+      "descriptionHint": "Geschichte, Sitz, bekannte Spiele …",
+      "usesShort": "Nicht verwendet | Einmal verwendet | {n}× verwendet"
+    },
+    "genres": {
+      "title": "Genres",
+      "one": "Genre",
+      "subtitle": "Genres der Spiele – für alle gleich, wie der ganze Katalog.",
+      "uses": "{n} Spiel | {n} Spiele",
+      "edit": "Genre bearbeiten",
+      "descriptionHint": "Was macht dieses Genre aus?",
+      "usesShort": "Kein Spiel | Ein Spiel | {n} Spiele"
+    },
+    "series": {
+      "title": "Serien",
+      "one": "Serie",
+      "subtitle": "Spielreihen – ein Spiel kann zu mehreren gehören.",
+      "uses": "{n} Spiel | {n} Spiele",
+      "edit": "Serie bearbeiten",
+      "descriptionHint": "Worum geht es in der Reihe?",
+      "usesShort": "Kein Spiel | Ein Spiel | {n} Spiele"
+    },
+    "search": "Suchen",
+    "none": "Nichts gefunden.",
+    "games": "Spiele",
+    "unused": "Noch keinem Spiel zugeordnet.",
+    "merge": "Zusammenführen",
+    "catalogHint": "Gilt im ganzen Katalog, für alle Bibliotheken.",
+    "name": "Name",
+    "nameHint": "Gibt es den Namen schon, führ die beiden lieber zusammen.",
+    "deleteTitle": "„{name}“ löschen?",
+    "deleteText": "Die Spiele bleiben, nur dieser Eintrag fällt weg. | Das Spiel bleibt, es verliert nur diesen Eintrag. | Die {n} Spiele bleiben, sie verlieren nur diesen Eintrag.",
+    "deleted": "„{name}“ gelöscht.",
+    "mergeTitle": "„{name}“ zusammenführen",
+    "mergeHint": "Für Dubletten und Schreibfehler: Alle Spiele dieses Eintrags bekommen den gewählten, dieser wird danach gelöscht.",
+    "mergeInto": "Zusammenführen mit",
+    "mergeIntoHint": "Der Eintrag, der bleibt.",
+    "pickTarget": "Wähl den Eintrag, der bleiben soll.",
+    "moves": "Kein Spiel wechselt | {n} Spiel wechselt | {n} Spiele wechseln",
+    "movesHint": "Diese Spiele bekommen den gewählten Eintrag.",
+    "merged": "Zusammengeführt mit „{name}“.",
+    "actions": "Aktionen",
+    "mergeMenu": "Mit anderem Eintrag zusammenführen…",
+    "years": "Zeitraum",
+    "inLibrary": "In {library}",
+    "related": "Häufig zusammen mit",
+    "role": {
+      "all": "Alle",
+      "developed": "Entwickelt",
+      "published": "Veröffentlicht"
+    },
+    "sort": {
+      "year": "Jahr",
+      "title": "Titel"
+    },
+    "onlyOwned": "Nur meine",
+    "noneOwned": "Keines dieser Spiele ist in deiner Bibliothek.",
+    "addDescription": "Beschreibung hinzufügen",
+    "about": "Allgemein",
+    "description": "Beschreibung",
+    "image": "Bild",
+    "imageHint": "Ein Logo oder Bild für die Seite – SVG, PNG, JPEG oder WebP, höchstens 2 MB. Wird sofort gespeichert.",
+    "upload": "Hochladen",
+    "removeImage": "Entfernen",
+    "imageSaved": "Bild gespeichert.",
+    "describe": {
+      "menu": "Beschreibung von {source} …",
+      "title": "Beschreibung von {source}",
+      "hint": "Welcher Eintrag bei {source} ist es? Sein Text wird die Beschreibung – in jeder Sprache, die es gibt, mit Quellenangabe.",
+      "take": "Übernehmen",
+      "replace": "Ersetzen",
+      "taken": "Beschreibung übernommen",
+      "logo": "Logo mit übernehmen",
+      "logoHint": "Das Logo des Eintrags wird das Bild der Seite.",
+      "logoReplaces": "Ersetzt das vorhandene Bild durch das Logo des Eintrags.",
+      "hasLogo": "Logo",
+      "takenWithLogo": "Beschreibung und Logo übernommen",
+      "logoFailed": "Das Logo ließ sich nicht verwenden.",
+      "confident": "Passt",
+      "factsOnly": "Kein Text – nur Angaben wie Gründung, Land und Website.",
+      "takeFacts": "Angaben übernehmen",
+      "askOther": "Bei {source} suchen"
+    },
+    "details": {
+      "title": "Firma",
+      "hint": "Was über die Firma bekannt ist – kommt auch aus Wikipedia, wenn du dort eine Beschreibung übernimmst.",
+      "founded": "Gegründet",
+      "dissolved": "Aufgelöst",
+      "existed": "Bestand",
+      "country": "Land",
+      "countryPlaceholder": "z. B. JP",
+      "headquarters": "Sitz",
+      "website": "Website",
+      "parent": "Gehört zu",
+      "subsidiaries": "Tochterfirmen"
+    },
+    "descriptionIn": "Beschreibung ({language})",
+    "onlyIn": "Nur auf {language}",
+    "images": {
+      "menu": "Bild wählen …",
+      "choose": "Aus Quellen wählen",
+      "title": "Bild wählen",
+      "hint": "Alle Bilder der verknüpften Einträge, auch ältere Logos. Ein Klick macht es zum Bild der Seite.",
+      "none": "Noch keine Bilder – erst eine Beschreibung aus einer Quelle übernehmen, dann stehen hier ihre Logos.",
+      "broken": "Lässt sich nicht laden",
+      "platformHint": "Alle Bilder der verknüpften Einträge: Logos, kleine Logos und Fotos. Jedes kann das Logo der Seite, ihr Foto oder das Icon des Abzeichens werden.",
+      "kinds": {
+        "logo": "Logo",
+        "icon": "Kleines Logo",
+        "photo": "Foto"
+      },
+      "as": {
+        "image": "Als Logo",
+        "photo": "Als Foto",
+        "icon": "Als Icon"
+      },
+      "slots": {
+        "image": "Logo",
+        "photo": "Foto des Geräts",
+        "icon": "Icon des Abzeichens"
+      },
+      "saved": {
+        "image": "Bild gespeichert",
+        "photo": "Foto gespeichert",
+        "icon": "Icon gespeichert"
+      },
+      "commons": "Auf Wikimedia Commons suchen",
+      "commonsHint": "Für Fotos oder ein fehlendes Icon: etwa „Nintendo DS icon“ oder „Nintendo DS Lite console“.",
+      "commonsPlaceholder": "{name} icon"
+    },
+    "franchises": {
+      "title": "Franchises",
+      "one": "Franchise",
+      "subtitle": "Marken über den Serien („Mario“ über „Super Mario“ und „Mario Kart“) – ein Spiel kann zu mehreren gehören.",
+      "uses": "{n} Spiel | {n} Spiele",
+      "edit": "Franchise bearbeiten",
+      "descriptionHint": "Was gehört zu dieser Marke?",
+      "usesShort": "Kein Spiel | Ein Spiel | {n} Spiele"
+    },
+    "count": "Ein Eintrag | {n} Einträge",
+    "sortBy": "Sortierung",
+    "overviewSort": {
+      "name": "A–Z",
+      "uses": "Meiste Spiele"
+    },
+    "partOf": "Teil von",
+    "franchiseOf": "Franchise",
+    "franchiseOfHint": "Die Marke, zu der die Serie gehört („Mario Kart“ → „Mario“). Wird aus Wikidata übernommen, wenn das Franchise im Katalog ist."
+  }
+}

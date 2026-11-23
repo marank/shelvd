@@ -1,0 +1,377 @@
+{
+  "app": {
+    "name": "shelvd",
+    "tagline": "Deine Spielesammlung"
+  },
+  "nav": {
+    "library": "Bibliothek",
+    "overviews": "Ansichten",
+    "allItems": "Alle Exemplare",
+    "loans": "Verliehen",
+    "locations": "Orte",
+    "people": "Personen",
+    "lists": "Listen",
+    "settings": "Einstellungen",
+    "switchLibrary": "Bibliothek wechseln",
+    "newLibrary": "Neue Bibliothek",
+    "manage": "Verwalten",
+    "upcoming": "Demnächst",
+    "integrations": "Integrationen",
+    "libraries": "Bibliotheken",
+    "manageLibraries": "Bibliotheken verwalten",
+    "platforms": "Plattformen",
+    "catalog": "Katalog",
+    "companies": "Firmen",
+    "genres": "Genres",
+    "series": "Serien",
+    "review": "Prüfliste",
+    "franchises": "Franchises"
+  },
+  "actions": {
+    "add": "Hinzufügen",
+    "addGame": "Spiel hinzufügen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "close": "Schließen",
+    "back": "Zurück",
+    "retry": "Erneut versuchen",
+    "loadMore": "Mehr laden",
+    "search": "Suchen",
+    "create": "Anlegen",
+    "copy": "Kopieren",
+    "copied": "Kopiert",
+    "confirm": "Bestätigen",
+    "logout": "Abmelden",
+    "hide": "Ausblenden",
+    "remove": "Entfernen"
+  },
+  "fields": {
+    "title": "Titel",
+    "platform": "Plattform",
+    "publisher": "Publisher",
+    "year": "Jahr",
+    "region": "Region",
+    "location": "Ort",
+    "owner": "Inhaber",
+    "borrower": "Ausgeliehen an",
+    "format": "Format",
+    "status": "Status",
+    "condition": "Zustand",
+    "completeness": "Vollständigkeit",
+    "play_status": "Spielstand",
+    "acquired_on": "Erworben am",
+    "purchase_price": "Kaufpreis",
+    "notes": "Notizen",
+    "edition": "Edition",
+    "release_date": "Erscheinungsdatum",
+    "summary": "Beschreibung",
+    "barcode": "Barcode",
+    "barcodes": "Barcodes",
+    "genres": "Genres",
+    "developers": "Entwickler",
+    "name": "Name",
+    "description": "Beschreibung",
+    "email": "E-Mail",
+    "username": "Benutzername",
+    "password": "Passwort",
+    "kind": "Art",
+    "parent": "Liegt in",
+    "cover": "Cover",
+    "series": "Serie",
+    "age_rating": "Altersfreigabe",
+    "tags": "Tags",
+    "current_value": "Sammlerwert",
+    "product_code": "Produktcode",
+    "release_number": "Release-Nummer",
+    "franchises": "Franchise"
+  },
+  "choices": {
+    "format": {
+      "physical": "Physisch",
+      "digital": "Digital"
+    },
+    "status": {
+      "owned": "Im Besitz",
+      "sold": "Verkauft"
+    },
+    "condition": {
+      "new": "Neu",
+      "like_new": "Wie neu",
+      "good": "Gut",
+      "acceptable": "Akzeptabel",
+      "poor": "Schlecht"
+    },
+    "completeness": {
+      "sealed": "Versiegelt",
+      "complete": "Komplett (CIB)",
+      "box_and_game": "Hülle + Spiel",
+      "loose": "Nur Modul/Disc"
+    },
+    "play_status": {
+      "unplayed": "Ungespielt",
+      "playing": "Spiele gerade",
+      "finished": "Durchgespielt",
+      "completed": "100 %",
+      "abandoned": "Abgebrochen"
+    },
+    "region": {
+      "pal": "PAL / Europa",
+      "de": "Deutschland",
+      "uk": "Großbritannien",
+      "fr": "Frankreich",
+      "na": "Nordamerika",
+      "jp": "Japan",
+      "asia": "Asien",
+      "kr": "Korea",
+      "world": "Weltweit",
+      "other": "Andere"
+    },
+    "role": {
+      "owner": "Eigentümer",
+      "editor": "Bearbeiten",
+      "viewer": "Ansehen"
+    },
+    "location_kind": {
+      "room": "Raum",
+      "furniture": "Möbel",
+      "shelf": "Regal",
+      "box": "Box",
+      "other": "Sonstiges"
+    },
+    "layout": {
+      "grid": "Raster",
+      "list": "Liste",
+      "table": "Tabelle"
+    },
+    "tracking": {
+      "watching": "Beobachtet",
+      "preordered": "Vorbestellt",
+      "bought": "Gekauft"
+    },
+    "media_type": {
+      "game": "Spiel",
+      "toy": "Figur",
+      "video": "Film"
+    },
+    "loan_overdue": {
+      "yes": "Ja"
+    },
+    "game_mode": {
+      "single_player": "Einzelspieler",
+      "multiplayer": "Mehrspieler",
+      "co_operative": "Koop",
+      "split_screen": "Split-Screen",
+      "massively_multiplayer_online_mmo": "MMO",
+      "battle_royale": "Battle Royale"
+    },
+    "perspective": {
+      "first_person": "Ego-Perspektive",
+      "third_person": "Third Person",
+      "bird_view_isometric": "Vogelperspektive / isometrisch",
+      "side_view": "Seitenansicht",
+      "text": "Text",
+      "auditory": "Akustisch",
+      "virtual_reality": "Virtual Reality"
+    },
+    "language": {
+      "arabic": "Arabisch",
+      "chinese_simplified": "Chinesisch (vereinfacht)",
+      "chinese_traditional": "Chinesisch (traditionell)",
+      "czech": "Tschechisch",
+      "danish": "Dänisch",
+      "dutch": "Niederländisch",
+      "english": "Englisch",
+      "english_uk": "Englisch (UK)",
+      "finnish": "Finnisch",
+      "french": "Französisch",
+      "german": "Deutsch",
+      "greek": "Griechisch",
+      "hebrew": "Hebräisch",
+      "hungarian": "Ungarisch",
+      "italian": "Italienisch",
+      "japanese": "Japanisch",
+      "korean": "Koreanisch",
+      "norwegian": "Norwegisch",
+      "polish": "Polnisch",
+      "portuguese_brazil": "Portugiesisch (Brasilien)",
+      "portuguese_portugal": "Portugiesisch (Portugal)",
+      "russian": "Russisch",
+      "spanish_mexico": "Spanisch (Mexiko)",
+      "spanish_spain": "Spanisch (Spanien)",
+      "swedish": "Schwedisch",
+      "thai": "Thailändisch",
+      "turkish": "Türkisch",
+      "ukrainian": "Ukrainisch",
+      "vietnamese": "Vietnamesisch"
+    }
+  },
+  "groups": {
+    "none": "Ohne Angabe"
+  },
+  "common": {
+    "loading": "Lädt …",
+    "empty": "Nichts hier.",
+    "items": "{n} Exemplar | {n} Exemplare",
+    "games": "{n} Spiel | {n} Spiele",
+    "optional": "optional",
+    "unknown": "Unbekannt",
+    "none": "—",
+    "or": "oder",
+    "value": "Wert {value}"
+  },
+  "errors": {
+    "generic": "Etwas ist schiefgelaufen.",
+    "notFound": "Nicht gefunden.",
+    "offline": "Der Server ist nicht erreichbar.",
+    "forbidden": "Das dürfen nur Admins."
+  },
+  "theme": {
+    "label": "Darstellung",
+    "system": "System",
+    "light": "Hell",
+    "dark": "Dunkel"
+  },
+  "language": {
+    "label": "Sprache",
+    "de": "Deutsch",
+    "en": "English"
+  },
+  "topbar": {
+    "searchPlaceholder": "Titel, Plattform, Publisher, Ort, Barcode …"
+  },
+  "dates": {
+    "tba": "TBA",
+    "precision": "Genauigkeit",
+    "start": "Datum",
+    "end": "Bis",
+    "month": "Monat",
+    "tbaHint": "Noch kein Termin bekannt.",
+    "released": "Erschienen",
+    "upcoming": "Erscheint",
+    "precisions": {
+      "day": "Tag",
+      "week": "Woche",
+      "month": "Monat",
+      "quarter": "Quartal",
+      "half": "Halbjahr",
+      "year": "Jahr",
+      "window": "Zeitraum",
+      "tba": "TBA"
+    }
+  },
+  "layout": {
+    "resizeHint": "Ziehen zum Ändern der Breite, Doppelklick setzt zurück",
+    "resizeSidebar": "Breite der Seitenleiste",
+    "resizeDetails": "Breite der Detailspalte"
+  },
+  "levels": {
+    "work": "Spiel",
+    "release": "Ausgabe",
+    "item": "Exemplar",
+    "works": "Spiel",
+    "releases": "Ausgaben",
+    "items": "Exemplare",
+    "open": {
+      "work": "Spiel öffnen",
+      "release": "Ausgabe öffnen",
+      "item": "Exemplar öffnen"
+    }
+  },
+  "scopes": {
+    "catalog": "Katalog",
+    "library": "Sammlung"
+  },
+  "itemObjects": {
+    "game": "Spiel",
+    "release": "Ausgabe",
+    "platform": "Plattform",
+    "publisher": "Publisher",
+    "copy": "Exemplar",
+    "location": "Ort",
+    "owner": "Inhaber",
+    "loan": "Verleih"
+  },
+  "itemFields": {
+    "game": {
+      "title": "Titel",
+      "series": "Serie",
+      "genres": "Genres",
+      "developers": "Entwickler",
+      "first_release": "Erstveröffentlichung",
+      "kind": "Art",
+      "letter": "Anfangsbuchstabe",
+      "time_main": "Spielzeit Story",
+      "time_extra": "Spielzeit + Extras",
+      "time_complete": "Spielzeit 100 %",
+      "critic_score": "Wertung",
+      "critic_recommended": "Empfohlen",
+      "franchises": "Franchise",
+      "modes": "Spielmodi",
+      "perspectives": "Perspektive",
+      "languages": "Sprachen"
+    },
+    "release": {
+      "edition": "Edition",
+      "region": "Region",
+      "year": "Jahr",
+      "decade": "Jahrzehnt",
+      "date": "Erscheinungsdatum",
+      "number": "Release-Nummer",
+      "product_code": "Produktcode",
+      "barcodes": "Barcodes",
+      "age_rating": "Altersfreigabe",
+      "developers": "Entwickler",
+      "players_offline": "Spieler lokal",
+      "players_online": "Spieler online"
+    },
+    "platform": {
+      "name": "Name",
+      "manufacturer": "Hersteller",
+      "year": "Erscheinungsjahr"
+    },
+    "publisher": {
+      "name": "Name"
+    },
+    "copy": {
+      "status": "Status",
+      "format": "Format",
+      "condition": "Zustand",
+      "completeness": "Vollständigkeit",
+      "progress": "Spielstand",
+      "value": "Sammlerwert",
+      "price": "Kaufpreis",
+      "acquired": "Erworben am",
+      "added": "Hinzugefügt",
+      "tags": "Tags",
+      "notes": "Notizen"
+    },
+    "location": {
+      "path": "Pfad",
+      "name": "Name",
+      "kind": "Typ",
+      "room": "Raum",
+      "shelf": "Regal",
+      "box": "Box"
+    },
+    "owner": {
+      "name": "Name"
+    },
+    "loan": {
+      "to": "an",
+      "since": "seit",
+      "due": "fällig bis",
+      "overdue": "überfällig"
+    }
+  },
+  "source": {
+    "freeSoftware": "shelvd ist freie Software ({license})",
+    "code": "Quellcode"
+  },
+  "picker": {
+    "create": "„{name}“ neu anlegen",
+    "remove": "{name} entfernen",
+    "none": "Keine Treffer"
+  }
+}

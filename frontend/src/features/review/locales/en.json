@@ -1,0 +1,20 @@
+{
+  "review": {
+    "title": "Review",
+    "subtitle": "Games entered by hand and barcodes assigned while adding. They are usable already until an admin checks them.",
+    "empty": "Nothing to review.",
+    "approve": "Fine",
+    "approveAll": "Approve all",
+    "removeBarcode": "Remove barcode",
+    "unknown": "Unknown",
+    "copies": "no copy | {n} copy | {n} copies",
+    "hint": "Entered twice or wrong? Open the entry and merge it into the right one or move the release via ⋮.",
+    "badge": "Unreviewed",
+    "badgeTitle": "Entered by hand, not checked by an admin yet",
+    "kinds": {
+      "work": "Game",
+      "release": "Release",
+      "barcode": "Barcode"
+    }
+  }
+}

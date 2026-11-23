@@ -1,0 +1,23 @@
+"""supervisord event listener: a program entered FATAL (gave up restarting) → stop
+supervisord, so the container exits and Docker's restart policy takes over."""
+
+import os
+import signal
+import sys
+
+
+def main() -> None:
+    while True:
+        sys.stdout.write("READY\n")
+        sys.stdout.flush()
+        header = dict(token.split(":", 1) for token in sys.stdin.readline().split())
+        payload = sys.stdin.read(int(header["len"]))
+        sys.stderr.write(f"exit-on-fatal: {header.get('eventname')} {payload}\n")
+        sys.stderr.flush()
+        sys.stdout.write("RESULT 2\nOK")
+        sys.stdout.flush()
+        os.kill(os.getppid(), signal.SIGTERM)  # parent is supervisord
+
+
+if __name__ == "__main__":
+    main()

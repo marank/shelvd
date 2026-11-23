@@ -1,0 +1,108 @@
+{
+  "add": {
+    "title": "Spiel hinzufügen",
+    "description": "Suche nach dem Titel oder scanne den Barcode.",
+    "addedCount": "{n} Spiel in dieser Sitzung hinzugefügt | {n} Spiele in dieser Sitzung hinzugefügt",
+    "added": "„{title}“ hinzugefügt",
+    "choose": "Auswählen …",
+    "sourceErrors": "Gerade nicht erreichbar: {sources}",
+    "scan": {
+      "cameraOff": "Kamera aus",
+      "starting": "Kamera wird gestartet …",
+      "useField": "Du kannst den Code unten eintippen oder einen Barcode-Scanner verwenden.",
+      "errors": {
+        "insecure": "Die Kamera funktioniert nur über HTTPS (oder auf localhost).",
+        "unsupported": "Dieser Browser kann nicht auf eine Kamera zugreifen.",
+        "denied": "Der Kamerazugriff wurde verweigert. Erlaube ihn in den Website-Einstellungen deines Browsers.",
+        "no-camera": "Keine Kamera gefunden.",
+        "failed": "Die Kamera konnte nicht gestartet werden."
+      },
+      "codeLabel": "Barcode oder Artikelnummer",
+      "codePlaceholder": "z. B. 0045496472306",
+      "lookup": "Spiel suchen",
+      "looking": "{code} wird nachgeschlagen …"
+    },
+    "search": {
+      "label": "Nach Titel suchen",
+      "placeholder": "Titel, z. B. Mario Kart",
+      "allPlatforms": "Alle Plattformen",
+      "typeMore": "Gib mindestens zwei Zeichen ein.",
+      "known": "Für diesen Barcode schon bekannt",
+      "unknownBarcode": "Zu diesem Barcode kennen wir noch kein Spiel. Gib den Titel ein.",
+      "catalog": "Schon im Katalog",
+      "online": "Online (IGDB)",
+      "noCatalog": "Noch nicht im Katalog.",
+      "noOnline": "Keine Online-Treffer.",
+      "igdbDisabled": "Für die Online-Suche braucht es IGDB-Zugangsdaten.",
+      "igdbLink": "Integrationen einrichten",
+      "notListed": "Nicht dabei?",
+      "toManual": "Selbst eintragen",
+      "barcode": "Barcode {code} wird dem Spiel zugeordnet, das du hier auswählst.",
+      "barcodeFailed": "Barcode nicht zugeordnet: {message}",
+      "placeholderCode": "Titel oder Barcode, z. B. Mario Kart",
+      "scan": "Scannen",
+      "codeHint": "Enter drücken, um nach diesem Barcode zu suchen.",
+      "clearBarcode": "Barcode entfernen"
+    },
+    "manual": {
+      "intro": "Nur Titel und Plattform sind Pflicht.",
+      "editionHint": "z. B. Collector's Edition",
+      "create": "Spiel anlegen",
+      "title": "Spiel selbst eintragen",
+      "game": "Spiel",
+      "details": "Weitere Angaben",
+      "created": "„{title}“ angelegt"
+    },
+    "confirm": {
+      "platformUnknown": "Die Quelle nennt „{name}“, das ist keine unserer Plattformen. Wähl bitte eine aus.",
+      "import": "Übernehmen"
+    },
+    "details": {
+      "more": "Weitere Angaben",
+      "add": "Zur Sammlung hinzufügen",
+      "addAndScan": "Hinzufügen und nächstes scannen"
+    },
+    "destination": {
+      "label": "Wohin damit?",
+      "library": "In die Bibliothek",
+      "libraryText": "Du hast das Spiel – es wird als Exemplar angelegt.",
+      "track": "Auf Demnächst",
+      "trackText": "Noch nicht erschienen, bestellt oder unterwegs – es landet unter „Demnächst“."
+    },
+    "track": {
+      "submit": "Auf Demnächst setzen",
+      "done": "„{title}“ steht jetzt auf Demnächst"
+    },
+    "mobile": {
+      "sheet": "Entscheidung zum Barcode",
+      "unknown": "Kein Spiel gefunden",
+      "failed": "Nachschlagen fehlgeschlagen",
+      "pick": "{n} Treffer – wähl einen aus",
+      "later": "Später",
+      "search": "Nach Titel suchen",
+      "discard": "Verwerfen",
+      "undo": "Rückgängig",
+      "again": "Noch ein Exemplar",
+      "track": "Vormerken",
+      "add": "Hinzufügen",
+      "other": "Anderes Spiel",
+      "details": "Details",
+      "autoShort": "Auto",
+      "round": "Diese Runde",
+      "count": "{done} von {all} hinzugefügt",
+      "empty": "Halte einen Barcode vor die Kamera.",
+      "code": "Code eintippen",
+      "searchTitle": "Suchen",
+      "defaults": "Für diese Runde",
+      "auto": "Bekannte Barcodes sofort hinzufügen",
+      "autoText": "Gibt es zum Code genau ein Spiel im Katalog, landet es ohne Nachfrage in der Bibliothek. Rückgängig geht über die Meldung oder die Liste.",
+      "defaultsText": "Jedes Exemplar dieser Runde bekommt diese Angaben.",
+      "done": "Fertig",
+      "duplicate": "Hast du schon – noch ein Exemplar?"
+    },
+    "owned": {
+      "release": "Schon {n}× in dieser Bibliothek",
+      "game": "Spiel schon da – in einer anderen Ausgabe"
+    }
+  }
+}
