@@ -11,7 +11,7 @@ from apps.catalog.models import Franchise, Series
 from apps.providers.services.integrations import save
 from apps.providers.sources.wikipedia import WikipediaSource
 
-from .fakes import response, router
+from .fakes import host, response, router
 
 
 def claim(value: Any) -> dict[str, Any]:
@@ -191,7 +191,7 @@ def test_an_entry_with_only_a_logo(
     svg = b'<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0h1v1z"/></svg>'
 
     def get(url: str, *args: Any, **kwargs: Any) -> httpx.Response:
-        if url.startswith("https://upload.wikimedia.org"):
+        if host(url) == "upload.wikimedia.org":
             return response(content=svg, ctype="image/svg+xml")
         return inner(url, *args, **kwargs)
 

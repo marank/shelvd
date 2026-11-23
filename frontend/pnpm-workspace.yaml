@@ -1,3 +1,12 @@
 allowBuilds:
   # Only switches between Vue 2 and 3 at install time; Vue 3 needs nothing from it.
   vue-demi: false
+
+
+# Security fixes in development-only dependencies whose parents still pin a vulnerable range
+# (stylus → decode-uri-component, openapi-typescript → minimatch, js-beautify → glob).
+# Drop an entry once its parent requires the fixed version itself.
+overrides:
+  decode-uri-component: ">=0.5.1"
+  "minimatch@>=7.0.0 <11.0.1": ">=11.0.1"
+  "glob@>=9.0.0 <14.0.2": ">=14.0.2"

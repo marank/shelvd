@@ -16,8 +16,7 @@ RUN pnpm run build
 
 # --- 2. Runtime: supervisord → nginx + gunicorn/Django -----------------------------
 # Named "runtime": CI builds it without cache, so system package updates are never held back.
-FROM python:3.14-slim-trixie@sha256:9aaa474097d094040649f2162a627c0049b408f52138d980916788d80f04802f AS runtime
-COPY --from=ghcr.io/astral-sh/uv:0.13.6@sha256:af22a52f5eafef3d78e551599d405c02df61919d18028f0cea8eda93bc9986d0 /uv /usr/local/bin/uv
+FROM python:3.15-slim-trixie@sha256:65a65fc7b30b06cb6df4930fd4650697cb23f4c2698ab81fc87e4b031bc36928 AS runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -27,18 +26,25 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PATH="/opt/venv/bin:$PATH" \
     DATA_DIR=/data
 
+# Debian's security updates come in with every build, not only with a new base image digest.
 RUN apt-get update \
+ && apt-get upgrade -y --no-install-recommends \
  && apt-get install -y --no-install-recommends nginx gettext-base gettext \
  && rm -rf /var/lib/apt/lists/* /etc/nginx/sites-enabled /etc/nginx/conf.d \
  # supervisord lives outside the app's venv; it's infrastructure, not an app dependency.
+ # pip goes afterwards: nothing installs at runtime, and its vendored packages (urllib3,
+ # msgpack, setuptools' pkg_resources) would only add known vulnerabilities to the image.
  && pip install --no-cache-dir --root-user-action=ignore supervisor \
+ && pip uninstall -y --root-user-action=ignore pip \
  && groupadd --system --gid 10001 app \
  && useradd --system --uid 10001 --gid app --home-dir /app --no-create-home app \
  && mkdir -p /data && chown app:app /data
 
 WORKDIR /app
 COPY backend/pyproject.toml backend/uv.lock ./
-RUN uv sync --frozen --no-dev --no-install-project
+# uv is mounted for this step only, so the image doesn't carry it.
+RUN --mount=from=ghcr.io/astral-sh/uv:0.13.9@sha256:d3b601f0c7b118bc1753febf7c41cc80981df678445e0254284eecf84db79a7d,source=/uv,target=/usr/local/bin/uv \
+    uv sync --frozen --no-dev --no-install-project
 COPY backend/ ./
 # collectstatic needs settings to import; a throwaway key is enough at build time.
 # compilemessages turns the committed .po translations into .mo files.

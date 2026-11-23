@@ -16,7 +16,7 @@ from apps.providers.services.metadata import Change, Value
 from apps.providers.sources import ProviderError
 from apps.providers.sources.igdb import IGDBSource, saved_answers
 
-from .fakes import IGDB_GAME, response, router
+from .fakes import IGDB_GAME, host, response, router
 
 
 def change(field: str, kind: str, current: Value, proposed: Value, **kw: Any) -> Change:
@@ -146,7 +146,7 @@ def test_rate_limit_waits_and_tries_again(
     answers = iter([response(429, json=[]), response(json=[IGDB_GAME])])
 
     def post(url: str, *args: Any, **kwargs: Any) -> httpx.Response:
-        if url.startswith("https://id.twitch.tv"):
+        if host(url) == "id.twitch.tv":
             return response(json={"access_token": "t"})
         return next(answers)
 
