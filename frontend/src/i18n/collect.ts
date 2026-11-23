@@ -3,12 +3,10 @@ export type Locale = (typeof LOCALES)[number]
 
 export type Messages = Record<string, unknown>
 
-// Keys that would reach Object.prototype instead of the message tree.
-const UNSAFE = new Set(['__proto__', 'constructor', 'prototype'])
-
 function merge(target: Messages, source: Messages): Messages {
   for (const [key, value] of Object.entries(source)) {
-    if (UNSAFE.has(key)) continue
+    // Keys that would reach Object.prototype instead of the message tree.
+    if (key === '__proto__' || key === 'constructor' || key === 'prototype') continue
     const existing = target[key]
     if (value && typeof value === 'object' && existing && typeof existing === 'object') {
       merge(existing as Messages, value as Messages)
