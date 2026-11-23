@@ -1,22 +1,41 @@
 # shelvd
 
+[![build](https://github.com/marank/shelvd/actions/workflows/build.yaml/badge.svg)](https://github.com/marank/shelvd/actions/workflows/build.yaml)
+[![License: AGPL-3.0-or-later](https://img.shields.io/badge/license-AGPL--3.0--or--later-blue)](LICENSE)
+[![Image](https://img.shields.io/badge/image-ghcr.io%2Fmarank%2Fshelvd-informational)](https://github.com/marank/shelvd/pkgs/container/shelvd)
+
 shelvd keeps track of your game collection – from NDS and 3DS to Switch and PS5, later DVDs
 and Blu-rays too. You record which copies you own, where they stand and who borrowed them, sort
-them into views of your own, and watch the games still to come until they arrive. It runs on
-your own server with Docker, in English and German.
+them into views of your own, and watch the games still to come until they arrive. Scan a
+barcode with your phone and the game is in; let IGDB, HowLongToBeat and others fill in the
+rest. It runs on your own server with Docker, in English and German.
+
+![Your collection as a grid of covers, with platform badges and who borrowed what](docs/screenshots/collection.png)
+
+<sub>Screenshots show made-up demo data: the titles are homages, the covers were drawn for this README.</sub>
 
 ## Features
 
 ### Your collection
 
-- **Views of your own:** nest freely (platform › publisher › year), save it as a view, show it
-  as grid, list or table, browse it like folders.
-- **Physical order:** places as a free tree (room › shelf › box).
-- **Owners and loans:** who owns which copy, who borrowed what, what is overdue.
-- **One page per game:** every release of a game, your copies of it, and your own title and
-  cover per library without changing the shared catalog.
+- **Views of your own:** nest freely (platform › publisher › year), filter and sort by any
+  field, save it as a view, show it as grid, list or table and browse it like folders.
+- **Physical order:** places as a free tree (room › shelf › box), so you find the cartridge
+  you're looking for.
+- **Owners and loans:** who owns which copy, who borrowed what, and what is overdue.
+- **Your copy, your way:** condition, completeness, play status, price and value per copy;
+  your own title, cover or edition without changing the shared catalog.
 - **Barcode scan** with the phone camera or a USB scanner; search across all fields including
   barcodes.
+
+### One page per game
+
+- **Game, release, copy on one page:** every release of a game, your copies of it, play times,
+  scores, languages, the series it belongs to and where the data comes from.
+- **A catalog to browse:** platforms, companies, genres, franchises and series have pages of
+  their own, with logos and descriptions from Wikipedia and IGDB.
+
+![A game's page: cover, your copy with place, state and value, the release's details](docs/screenshots/game-page.png)
 
 ### Upcoming games
 
@@ -33,13 +52,16 @@ your own server with Docker, in English and German.
 - **Integrations**, set up in the app: game data and covers from IGDB, play times from
   HowLongToBeat, scores from OpenCritic, more covers from TheGamesDB and ScreenScraper (see
   [docs/data-sources.md](docs/data-sources.md)). All are off until an admin turns them on.
+- **Add-ons:** optional features can live in repositories of their own and plug in without
+  changing shelvd.
 
 ### Operations and security
 
-- **Roles:** only admins change the shared catalog; library owners decide who sees and edits
-  what, and viewers never see prices or contact details.
+- **Roles:** only admins change the shared catalog – what others enter waits in a review
+  queue; library owners decide who sees and edits what, and viewers never see prices or
+  contact details.
 - **Hardened container:** read-only, without capabilities, as an unprivileged user; nightly
-  database backups.
+  database backups; images for amd64 and arm64 with a provenance attestation.
 
 ## Quick start with Docker
 
